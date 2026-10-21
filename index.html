@@ -104,360 +104,400 @@
     </style>
 </head>
 
-<body class="bg-studio-50 dark:bg-studio-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-studio-50 dark:bg-studio-950 text-slate-800 dark:text-slate-100 font-sans h-[100dvh] max-h-[100dvh] w-screen overflow-hidden flex flex-col transition-colors duration-300">
 
-    <!-- Top Header Bar -->
-    <header class="sticky top-0 z-30 backdrop-blur-xl bg-white/85 dark:bg-studio-900/85 border-b border-slate-200/80 dark:border-slate-800/80 px-3 sm:px-6 py-2.5">
+    <!-- Compact Top Header Bar -->
+    <header class="shrink-0 backdrop-blur-xl bg-white/90 dark:bg-studio-900/90 border-b border-slate-200/80 dark:border-slate-800/80 px-3 sm:px-5 py-2 z-20">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <!-- Brand & Status -->
-            <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
-                    <i class="fa-solid fa-wave-square text-lg"></i>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25">
+                    <i class="fa-solid fa-wave-square text-sm"></i>
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <h1 class="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300 bg-clip-text text-transparent">
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="font-extrabold text-sm sm:text-base tracking-tight bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300 bg-clip-text text-transparent">
                             GrooveStudio
                         </h1>
-                        <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-bold border border-indigo-500/20">
-                            MIDI DSP
+                        <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-bold border border-indigo-500/20">
+                            PRO
                         </span>
                     </div>
-                    <p id="lbl-subtitle" class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">
+                    <p id="lbl-subtitle" class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block leading-none">
                         Generatore di basi musicali realistiche per strumenti solisti
                     </p>
                 </div>
             </div>
 
-            <!-- Right Actions: Instrument Practice Preset, Language, Theme -->
-            <div class="flex items-center gap-1.5 sm:gap-2">
+            <!-- Right Actions: Instrument Transposition, Language, Theme -->
+            <div class="flex items-center gap-1.5">
                 <!-- Transposition Quick Badge for Horn/Guitar players -->
                 <button id="btn-transpose-mode" onclick="cycleTranspositionDisplay()" 
-                    class="px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25 hover:bg-amber-500/20 transition flex items-center gap-1.5"
+                    class="px-2 py-1 rounded-lg text-[11px] font-mono font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25 hover:bg-amber-500/20 transition flex items-center gap-1"
                     title="Transposition for Bb Trumpet / Eb Sax">
-                    <i class="fa-solid fa-music text-[10px]"></i>
+                    <i class="fa-solid fa-music text-[9px]"></i>
                     <span id="lbl-transpose-badge">Concert (C)</span>
                 </button>
 
                 <!-- Language Switcher (IT / EN) -->
                 <button id="btn-lang" onclick="toggleLanguage()" 
-                    class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-globe text-indigo-500"></i>
+                    class="px-2 py-1 rounded-lg text-[11px] font-bold bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1">
+                    <i class="fa-solid fa-globe text-indigo-500 text-[10px]"></i>
                     <span id="lbl-lang-code">IT</span>
                 </button>
 
                 <!-- Dark / Light Mode Toggle -->
                 <button id="btn-theme" onclick="toggleTheme()" 
-                    class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition text-slate-700 dark:text-amber-300"
+                    class="w-7 h-7 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition text-slate-700 dark:text-amber-300"
                     aria-label="Toggle Dark Mode">
-                    <i id="icon-theme" class="fa-solid fa-sun text-sm"></i>
+                    <i id="icon-theme" class="fa-solid fa-sun text-xs"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 py-4 space-y-4 pb-28">
-
-        <!-- Live Display HUD: Current Chord, Beat Indicators, Visualizer & Transport -->
-        <section class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 shadow-xl shadow-slate-900/5 dark:shadow-black/40 p-4 sm:p-5 relative overflow-hidden">
-            <!-- Top Row inside HUD: Now Playing Info + Visualizer Canvas -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                
-                <!-- Left: Current & Next Chord Display -->
-                <div class="md:col-span-5 flex items-center justify-between md:justify-start gap-4 bg-slate-50 dark:bg-studio-950/90 p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-800/80">
-                    <div>
-                        <span id="lbl-current-chord-title" class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
-                            ACCORDO ATTUALE
+    <!-- Persistent Top HUD & Transport Bar (Always visible across all tabs) -->
+    <section class="shrink-0 max-w-5xl w-full mx-auto px-2.5 sm:px-5 pt-2 pb-1">
+        <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 shadow-md p-2.5 sm:p-3 space-y-2">
+            
+            <!-- Top HUD Row: Current Chord, Next Chord & Beat LEDs -->
+            <div class="grid grid-cols-12 gap-2 items-center">
+                <!-- Current & Next Chord Box -->
+                <div class="col-span-7 sm:col-span-6 flex items-center justify-between bg-slate-50 dark:bg-studio-950/90 px-2.5 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80">
+                    <div class="min-w-0">
+                        <span id="lbl-current-chord-title" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block leading-tight">
+                            ACCORDO
                         </span>
-                        <div class="flex items-baseline gap-2 mt-0.5">
-                            <span id="hud-current-chord" class="font-mono font-extrabold text-3xl sm:text-4xl text-indigo-600 dark:text-indigo-400 tracking-tight">
+                        <div class="flex items-baseline gap-1.5">
+                            <span id="hud-current-chord" class="font-mono font-extrabold text-xl sm:text-2xl text-indigo-600 dark:text-indigo-400 tracking-tight leading-none">
                                 Cmaj7
                             </span>
-                            <span id="hud-chord-notes" class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                            <span id="hud-chord-notes" class="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate">
                                 C E G B
                             </span>
                         </div>
-                        <span id="hud-scale-suggestion" class="inline-block mt-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
-                            Scala: C Ionian (Maggiore)
+                        <span id="hud-scale-suggestion" class="inline-block mt-0.5 text-[9px] sm:text-[10px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.2 rounded truncate max-w-full">
+                            Scala: C Ionian
                         </span>
                     </div>
 
-                    <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-4">
-                        <span id="lbl-next-chord-title" class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                    <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-2.5 shrink-0">
+                        <span id="lbl-next-chord-title" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block leading-tight">
                             PROSSIMO
                         </span>
-                        <span id="hud-next-chord" class="font-mono font-bold text-xl text-slate-600 dark:text-slate-300 mt-1 block">
+                        <span id="hud-next-chord" class="font-mono font-bold text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-tight block">
                             Am7
                         </span>
-                        <span id="hud-bar-counter" class="text-[11px] font-mono text-slate-400">
+                        <span id="hud-bar-counter" class="text-[9px] font-mono text-slate-400 block">
                             Bar 1/4
                         </span>
                     </div>
                 </div>
 
-                <!-- Center: Beat LEDs & Real-Time Audio Visualizer -->
-                <div class="md:col-span-4 flex flex-col justify-between bg-slate-50 dark:bg-studio-950/90 p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-800/80 h-full">
-                    <div class="flex items-center justify-between mb-2">
-                        <span id="lbl-beat-indicator" class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                            BATTITO / METRONOMO
+                <!-- Beat LEDs & Mini Spectrum Visualizer -->
+                <div class="col-span-5 sm:col-span-6 flex flex-col justify-between bg-slate-50 dark:bg-studio-950/90 px-2.5 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80 h-full">
+                    <div class="flex items-center justify-between mb-1">
+                        <span id="lbl-beat-indicator" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 truncate">
+                            BATTITO
                         </span>
-                        <span id="hud-time-sig" class="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">4/4</span>
+                        <span id="hud-time-sig" class="text-[10px] font-mono font-bold text-cyan-600 dark:text-cyan-400">4/4</span>
                     </div>
 
-                    <!-- 4 Beat LED Pads -->
-                    <div id="beat-leds-container" class="grid grid-cols-4 gap-2 my-1">
-                        <div id="beat-led-0" class="h-8 rounded-xl bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-xs text-slate-500 transition-all duration-75">1</div>
-                        <div id="beat-led-1" class="h-8 rounded-xl bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-xs text-slate-500 transition-all duration-75">2</div>
-                        <div id="beat-led-2" class="h-8 rounded-xl bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-xs text-slate-500 transition-all duration-75">3</div>
-                        <div id="beat-led-3" class="h-8 rounded-xl bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-xs text-slate-500 transition-all duration-75">4</div>
+                    <div id="beat-leds-container" class="grid grid-cols-4 gap-1">
+                        <div id="beat-led-0" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">1</div>
+                        <div id="beat-led-1" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">2</div>
+                        <div id="beat-led-2" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">3</div>
+                        <div id="beat-led-3" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">4</div>
                     </div>
 
-                    <!-- Mini Spectrum Canvas -->
-                    <div class="w-full h-7 mt-1.5 rounded-lg overflow-hidden bg-slate-200/60 dark:bg-studio-900">
+                    <div class="w-full h-4 mt-1 rounded overflow-hidden bg-slate-200/60 dark:bg-studio-900">
                         <canvas id="audio-visualizer" class="w-full h-full block"></canvas>
                     </div>
                 </div>
-
-                <!-- Right: Main Play/Stop, Count-in & Metronome Quick Toggles -->
-                <div class="md:col-span-3 flex flex-row md:flex-col gap-2">
-                    <button id="btn-play-toggle" onclick="togglePlayback()" 
-                        class="flex-1 py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2.5">
-                        <i id="icon-play" class="fa-solid fa-play text-base"></i>
-                        <span id="lbl-play-btn">AVVIA BASE</span>
-                    </button>
-
-                    <div class="flex gap-2">
-                        <!-- Metronome Click Toggle -->
-                        <button id="btn-metro-toggle" onclick="toggleMetronome()" 
-                            class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-                            <i class="fa-solid fa-stopwatch text-amber-500"></i>
-                            <span id="lbl-metro-btn">Click: OFF</span>
-                        </button>
-
-                        <!-- Count-in Toggle -->
-                        <button id="btn-countin-toggle" onclick="toggleCountIn()" 
-                            class="py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1 bg-indigo-500/15 border-indigo-500/30 text-indigo-600 dark:text-indigo-300"
-                            title="Count-in 1 battuta prima di iniziare">
-                            <i class="fa-solid fa-1"></i>
-                            <span id="lbl-countin-btn">Count-In</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Practice Companion Mode Bar (For Guitar, Bass, Trumpet, Sax, Keys) -->
-        <section class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3.5 sm:p-4 shadow-sm">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-indigo-500 text-sm"></i>
-                    <span id="lbl-companion-mode" class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                        QUAL È IL TUO STRUMENTO? (OTTIMIZZA MIX E TONALITÀ)
-                    </span>
-                </div>
-                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
-                    <button onclick="applyCompanionPreset('full')" id="preset-btn-full" class="companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition">
-                        <i class="fa-solid fa-users mr-1"></i> <span data-i18n="presetFull">Full Band</span>
-                    </button>
-                    <button onclick="applyCompanionPreset('guitar')" id="preset-btn-guitar" class="companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-studio-700 transition">
-                        <i class="fa-solid fa-guitar mr-1 text-amber-500"></i> <span data-i18n="presetGuitar">Chitarra (No Guitar)</span>
-                    </button>
-                    <button onclick="applyCompanionPreset('bass')" id="preset-btn-bass" class="companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-studio-700 transition">
-                        <i class="fa-solid fa-bolt mr-1 text-emerald-500"></i> <span data-i18n="presetBass">Basso (No Bass)</span>
-                    </button>
-                    <button onclick="applyCompanionPreset('trumpet')" id="preset-btn-trumpet" class="companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-studio-700 transition">
-                        <i class="fa-solid fa-bullhorn mr-1 text-rose-500"></i> <span data-i18n="presetTrumpet">Tromba / Sax (Bb)</span>
-                    </button>
-                    <button onclick="applyCompanionPreset('sax_eb')" id="preset-btn-sax_eb" class="companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-studio-700 transition">
-                        <i class="fa-solid fa-wind mr-1 text-cyan-500"></i> <span data-i18n="presetSaxEb">Sax Contralto (Eb)</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Controls Grid: Genre & Rhythm + Tempo & Key/Progression -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-
-            <!-- Left Column (7 cols): Genre, Rhythm Variation, Key & Progression -->
-            <div class="lg:col-span-7 space-y-4">
-
-                <!-- Genre & Groove Selector Card -->
-                <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-4 shadow-sm space-y-3.5">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-compact-disc text-indigo-500"></i>
-                            <span id="lbl-genre-section">GENERE MUSICALE & RITMO</span>
-                        </h2>
-                        <!-- Groove Variation A / B / Fill -->
-                        <div class="flex items-center gap-1 bg-slate-100 dark:bg-studio-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <button onclick="setGrooveVariation('A')" id="var-btn-A" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">Groove A</button>
-                            <button onclick="setGrooveVariation('B')" id="var-btn-B" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">Groove B</button>
-                            <button onclick="triggerDrumFill()" id="btn-drum-fill" class="px-2.5 py-1 rounded-lg text-xs font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-500/15 transition">
-                                <i class="fa-solid fa-drum mr-1"></i>Fill
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Genre Pill Buttons Grid -->
-                    <div id="genre-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <!-- Populated dynamically by JS -->
-                    </div>
-                </div>
-
-                <!-- Tempo (BPM) & Key / Progression Selector Card -->
-                <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-4 shadow-sm space-y-4">
-                    
-                    <!-- Tempo Control Row -->
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <label for="tempo-slider" class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                <i class="fa-solid fa-gauge-high text-cyan-500"></i>
-                                <span id="lbl-tempo-title">TEMPO (BPM)</span>
-                            </label>
-                            <div class="flex items-center gap-1.5">
-                                <button onclick="adjustTempo(-5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-5</button>
-                                <button onclick="adjustTempo(-1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-1</button>
-                                <span id="tempo-display" class="font-mono font-extrabold text-lg px-2.5 py-0.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                                    110
-                                </span>
-                                <button onclick="adjustTempo(1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+1</button>
-                                <button onclick="adjustTempo(5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+5</button>
-                                <button onclick="handleTapTempo()" id="btn-tap-tempo" class="ml-1 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-xs active:scale-95 transition">
-                                    TAP
-                                </button>
-                            </div>
-                        </div>
-                        <input id="tempo-slider" type="range" min="45" max="220" value="110" oninput="setTempo(this.value)" class="w-full">
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="border-t border-slate-200/70 dark:border-slate-800/80"></div>
-
-                    <!-- Key (Tonalità) & Progression Template Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <!-- Root Key Selector -->
-                        <div>
-                            <label id="lbl-key-select" class="block text-[11px] font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">
-                                Tonalità (Key)
-                            </label>
-                            <select id="select-key" onchange="onKeyOrProgressionChange()" 
-                                class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="0">C (Do)</option>
-                                <option value="1">Db / C# (Reb)</option>
-                                <option value="2">D (Re)</option>
-                                <option value="3">Eb (Mib)</option>
-                                <option value="4">E (Mi)</option>
-                                <option value="5">F (Fa)</option>
-                                <option value="6">F# / Gb (Fa#)</option>
-                                <option value="7">G (Sol)</option>
-                                <option value="8">Ab (Lab)</option>
-                                <option value="9">A (La)</option>
-                                <option value="10">Bb (Sib)</option>
-                                <option value="11">B (Si)</option>
-                            </select>
-                        </div>
-
-                        <!-- Progression Preset Selector -->
-                        <div class="sm:col-span-2">
-                            <label id="lbl-prog-select" class="block text-[11px] font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">
-                                Progressione Armonica
-                            </label>
-                            <select id="select-progression" onchange="onKeyOrProgressionChange()" 
-                                class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <!-- Populated dynamically -->
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Chord Chart Grid (Click any bar to edit chord!) -->
-                <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-4 shadow-sm space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                <i class="fa-solid fa-table-cells-large text-emerald-500"></i>
-                                <span id="lbl-chord-grid-title">GRIGLIA ACCORDI (TOCCA UNA BATTUTA PER MODIFICARLA)</span>
-                            </h2>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <button onclick="addChordBar()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 hover:bg-emerald-500/25 transition">
-                                <i class="fa-solid fa-plus mr-1"></i><span id="lbl-add-bar">Battuta</span>
-                            </button>
-                            <button onclick="removeChordBar()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/25 hover:bg-rose-500/25 transition">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Dynamic Chord Bars Grid -->
-                    <div id="chord-bars-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
             </div>
 
-            <!-- Right Column (5 cols): Multi-Instrument Studio Mixer & Metronome Settings -->
-            <div class="lg:col-span-5 space-y-4">
+            <!-- Second HUD Row: Play/Stop + Quick Groove A/B/Fill + Metronome Click -->
+            <div class="flex items-center gap-1.5">
+                <button id="btn-play-toggle" onclick="togglePlayback()" 
+                    class="flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    <i id="icon-play" class="fa-solid fa-play text-xs"></i>
+                    <span id="lbl-play-btn">AVVIA BASE</span>
+                </button>
 
-                <!-- Multi-Track Instrument Mixer -->
-                <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-4 shadow-sm space-y-3.5">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-purple-500"></i>
-                            <span id="lbl-mixer-title">MIXER STRUMENTI (ATTIVA / DISATTIVA)</span>
-                        </h2>
-                        <button onclick="resetAllChannels()" id="btn-reset-mixer" class="text-xs font-semibold text-indigo-500 hover:underline">
-                            Reset Mix
-                        </button>
-                    </div>
-
-                    <!-- Instrument Channels Container -->
-                    <div id="mixer-channels-container" class="space-y-2.5">
-                        <!-- Populated dynamically by JS -->
-                    </div>
+                <!-- Quick Groove A / B / Fill Bar -->
+                <div class="flex items-center gap-0.5 bg-slate-100 dark:bg-studio-950 p-0.5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <button onclick="setGrooveVariation('A')" id="var-btn-A" class="px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition">A</button>
+                    <button onclick="setGrooveVariation('B')" id="var-btn-B" class="px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">B</button>
+                    <button onclick="triggerDrumFill()" id="btn-drum-fill" class="px-2 py-1.5 rounded-lg text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-500/15 transition" title="Drum Fill">
+                        <i class="fa-solid fa-drum"></i>
+                    </button>
                 </div>
 
-                <!-- Dedicated Metronome & Master Studio Reverb Card -->
-                <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-4 shadow-sm space-y-3.5">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-bell text-amber-500"></i>
-                            <span id="lbl-metro-settings-title">METRONOMO & MASTER STUDIO</span>
-                        </h2>
-                        <span id="metro-status-pill" class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500">
-                            OFF
-                        </span>
-                    </div>
+                <!-- Metronome Click Quick Toggle -->
+                <button id="btn-metro-toggle" onclick="toggleMetronome()" 
+                    class="py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                    <i class="fa-solid fa-stopwatch text-amber-500"></i>
+                    <span id="lbl-metro-btn" class="hidden xs:inline sm:inline">Click: OFF</span>
+                </button>
 
-                    <!-- Metronome Volume & Subdivision -->
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between gap-3">
-                            <span id="lbl-metro-vol" class="text-xs font-semibold text-slate-600 dark:text-slate-300 w-28">Volume Click</span>
-                            <input id="metro-vol-slider" type="range" min="0" max="100" value="75" oninput="updateMetroVolume(this.value)" class="flex-1">
-                            <span id="metro-vol-val" class="text-xs font-mono w-9 text-right text-slate-500">75%</span>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-2">
-                            <span id="lbl-metro-mode" class="text-xs font-semibold text-slate-600 dark:text-slate-300">Suddivisione</span>
-                            <div class="flex gap-1 bg-slate-100 dark:bg-studio-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <button onclick="setMetroSubdivision(1)" id="metro-sub-1" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white">1/4</button>
-                                <button onclick="setMetroSubdivision(2)" id="metro-sub-2" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">1/8</button>
-                                <button onclick="setMetroSubdivision('offbeat')" id="metro-sub-offbeat" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">2 & 4 (Jazz)</button>
-                            </div>
-                        </div>
-
-                        <!-- Swing / Humanize & Ambience -->
-                        <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-200/60 dark:border-slate-800/70">
-                            <span id="lbl-swing-amount" class="text-xs font-semibold text-slate-600 dark:text-slate-300 w-28">Swing Feel</span>
-                            <input id="swing-slider" type="range" min="0" max="65" value="0" oninput="updateSwing(this.value)" class="flex-1">
-                            <span id="swing-val" class="text-xs font-mono w-9 text-right text-slate-500">0%</span>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Count-in Quick Toggle -->
+                <button id="btn-countin-toggle" onclick="toggleCountIn()" 
+                    class="py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300"
+                    title="Count-in 1 battuta prima di iniziare">
+                    <i class="fa-solid fa-1"></i>
+                    <span id="lbl-countin-btn" class="hidden sm:inline">Count-In</span>
+                </button>
             </div>
         </div>
+    </section>
+
+    <!-- Main Tabbed Workspace (Fits remaining viewport height without page scroll) -->
+    <main class="flex-1 min-h-0 max-w-5xl w-full mx-auto px-2.5 sm:px-5 py-1.5 flex flex-col overflow-hidden">
+
+        <!-- TAB 1: CHORDS & HARMONY (Default Active Tab) -->
+        <div id="tab-panel-chords" class="tab-panel flex-1 min-h-0 flex flex-col gap-2 overflow-y-auto no-scrollbar">
+            
+            <!-- Key & Progression Selector + Companion Instrument Bar -->
+            <div class="shrink-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3 shadow-sm space-y-2">
+                <!-- Key & Progression Row -->
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-4 sm:col-span-3">
+                        <label id="lbl-key-select" class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
+                            Tonalità (Key)
+                        </label>
+                        <select id="select-key" onchange="onKeyOrProgressionChange()" 
+                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="0">C (Do)</option>
+                            <option value="1">Db / C#</option>
+                            <option value="2">D (Re)</option>
+                            <option value="3">Eb (Mib)</option>
+                            <option value="4">E (Mi)</option>
+                            <option value="5">F (Fa)</option>
+                            <option value="6">F# / Gb</option>
+                            <option value="7">G (Sol)</option>
+                            <option value="8">Ab (Lab)</option>
+                            <option value="9">A (La)</option>
+                            <option value="10">Bb (Sib)</option>
+                            <option value="11">B (Si)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-span-8 sm:col-span-9">
+                        <label id="lbl-prog-select" class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
+                            Progressione Armonica
+                        </label>
+                        <select id="select-progression" onchange="onKeyOrProgressionChange()" 
+                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2.5 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Quick Solo Instrument Mode Pills -->
+                <div class="flex items-center gap-1.5 pt-1 border-t border-slate-100 dark:border-slate-800/80 overflow-x-auto no-scrollbar">
+                    <span id="lbl-companion-mode" class="text-[9px] font-bold uppercase text-slate-400 shrink-0 hidden sm:inline">
+                        STRUMENTO:
+                    </span>
+                    <button onclick="applyCompanionPreset('full')" id="preset-btn-full" class="companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition">
+                        <i class="fa-solid fa-users mr-1"></i><span data-i18n="presetFull">Full Band</span>
+                    </button>
+                    <button onclick="applyCompanionPreset('guitar')" id="preset-btn-guitar" class="companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-guitar mr-1 text-amber-500"></i><span data-i18n="presetGuitar">Chitarra</span>
+                    </button>
+                    <button onclick="applyCompanionPreset('bass')" id="preset-btn-bass" class="companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-bolt mr-1 text-emerald-500"></i><span data-i18n="presetBass">Basso</span>
+                    </button>
+                    <button onclick="applyCompanionPreset('trumpet')" id="preset-btn-trumpet" class="companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-bullhorn mr-1 text-rose-500"></i><span data-i18n="presetTrumpet">Tromba/Sax (Bb)</span>
+                    </button>
+                    <button onclick="applyCompanionPreset('sax_eb')" id="preset-btn-sax_eb" class="companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-wind mr-1 text-cyan-500"></i><span data-i18n="presetSaxEb">Alto Sax (Eb)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interactive Chord Chart Grid Card -->
+            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3.5 shadow-sm flex flex-col">
+                <div class="shrink-0 flex items-center justify-between mb-2">
+                    <h2 class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
+                        <i class="fa-solid fa-table-cells-large text-emerald-500"></i>
+                        <span id="lbl-chord-grid-title" class="truncate">GRIGLIA ACCORDI (TOCCA PER MODIFICARE)</span>
+                    </h2>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="addChordBar()" class="px-2 py-1 rounded-lg text-[11px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 hover:bg-emerald-500/25 transition">
+                            <i class="fa-solid fa-plus mr-0.5"></i><span id="lbl-add-bar">Bar</span>
+                        </button>
+                        <button onclick="removeChordBar()" class="px-2 py-1 rounded-lg text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/25 hover:bg-rose-500/25 transition">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Chord Bars Grid (Auto-fits 4 to 12 bars cleanly) -->
+                <div id="chord-bars-grid" class="flex-1 min-h-0 grid grid-cols-3 sm:grid-cols-4 gap-2 content-start overflow-y-auto no-scrollbar">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: GROOVE, GENRE & TEMPO -->
+        <div id="tab-panel-groove" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
+            
+            <!-- Musical Genre & Rhythm Grid -->
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3 shadow-sm space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-compact-disc text-indigo-500"></i>
+                        <span id="lbl-genre-section">GENERE MUSICALE & RITMO</span>
+                    </h2>
+                </div>
+
+                <div id="genre-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+
+            <!-- Tempo (BPM) & Swing Feel Card -->
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3 shadow-sm space-y-3">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="tempo-slider" class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-gauge-high text-cyan-500"></i>
+                            <span id="lbl-tempo-title">TEMPO (BPM)</span>
+                        </label>
+                        <div class="flex items-center gap-1">
+                            <button onclick="adjustTempo(-5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-5</button>
+                            <button onclick="adjustTempo(-1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-1</button>
+                            <span id="tempo-display" class="font-mono font-extrabold text-base px-2.5 py-0.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                                110
+                            </span>
+                            <button onclick="adjustTempo(1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+1</button>
+                            <button onclick="adjustTempo(5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+5</button>
+                            <button onclick="handleTapTempo()" id="btn-tap-tempo" class="ml-1 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-xs active:scale-95 transition">
+                                TAP
+                            </button>
+                        </div>
+                    </div>
+                    <input id="tempo-slider" type="range" min="45" max="220" value="110" oninput="setTempo(this.value)" class="w-full">
+                </div>
+
+                <!-- Swing Feel Control -->
+                <div class="flex items-center justify-between gap-3 pt-2 border-t border-slate-200/60 dark:border-slate-800/70">
+                    <span id="lbl-swing-amount" class="text-xs font-bold text-slate-600 dark:text-slate-300 w-24">Swing Feel</span>
+                    <input id="swing-slider" type="range" min="0" max="65" value="0" oninput="updateSwing(this.value)" class="flex-1">
+                    <span id="swing-val" class="text-xs font-mono w-9 text-right text-slate-500">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: STUDIO MIXER (5 CHANNELS) -->
+        <div id="tab-panel-mixer" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
+            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3.5 shadow-sm flex flex-col">
+                <div class="shrink-0 flex items-center justify-between mb-2">
+                    <h2 class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-sliders text-purple-500"></i>
+                        <span id="lbl-mixer-title">MIXER STRUMENTI (MUTE / SOLO / TIMBRO)</span>
+                    </h2>
+                    <button onclick="resetAllChannels()" id="btn-reset-mixer" class="text-xs font-bold text-indigo-500 hover:underline">
+                        Reset Mix
+                    </button>
+                </div>
+
+                <!-- Compact 5-Channel Mixer Container -->
+                <div id="mixer-channels-container" class="flex-1 min-h-0 space-y-1.5 overflow-y-auto no-scrollbar">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: METRONOME & PRACTICE SETTINGS -->
+        <div id="tab-panel-metro" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3.5 shadow-sm space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-bell text-amber-500"></i>
+                        <span id="lbl-metro-settings-title">METRONOMO & STUDIO PRACTICE</span>
+                    </h2>
+                    <span id="metro-status-pill" class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500">
+                        OFF
+                    </span>
+                </div>
+
+                <!-- Metronome Volume & Subdivision -->
+                <div class="space-y-3.5">
+                    <div class="flex items-center justify-between gap-3">
+                        <span id="lbl-metro-vol" class="text-xs font-semibold text-slate-600 dark:text-slate-300 w-28">Volume Click</span>
+                        <input id="metro-vol-slider" type="range" min="0" max="100" value="75" oninput="updateMetroVolume(this.value)" class="flex-1">
+                        <span id="metro-vol-val" class="text-xs font-mono w-9 text-right text-slate-500">75%</span>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-2">
+                        <span id="lbl-metro-mode" class="text-xs font-semibold text-slate-600 dark:text-slate-300">Suddivisione</span>
+                        <div class="flex gap-1 bg-slate-100 dark:bg-studio-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <button onclick="setMetroSubdivision(1)" id="metro-sub-1" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white">1/4</button>
+                            <button onclick="setMetroSubdivision(2)" id="metro-sub-2" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">1/8</button>
+                            <button onclick="setMetroSubdivision('offbeat')" id="metro-sub-offbeat" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">2 & 4 (Jazz)</button>
+                        </div>
+                    </div>
+
+                    <!-- Instrument Transposition Guide Box -->
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-studio-950/90 border border-slate-200/70 dark:border-slate-800/80 space-y-2">
+                        <div class="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-music text-amber-500"></i>
+                            <span data-i18n="transposeGuideTitle">Trasposizione Display per Strumenti a Fiato</span>
+                        </div>
+                        <p data-i18n="transposeGuideDesc" class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                            L'audio suona sempre nella tonalità reale (Concert Pitch), mentre gli accordi e le scale consigliate si traspongono automaticamente per il tuo strumento.
+                        </p>
+                        <div class="grid grid-cols-3 gap-1.5 pt-1">
+                            <button onclick="setTranspositionDisplay(0, 'Concert (C)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
+                                Concert (C)
+                            </button>
+                            <button onclick="setTranspositionDisplay(2, 'Bb (+2 Semitoni)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
+                                Bb (Tromba/Tenor)
+                            </button>
+                            <button onclick="setTranspositionDisplay(9, 'Eb (+9 Semitoni)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
+                                Eb (Alto Sax)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <!-- Bottom Mobile App Navigation Bar -->
+    <nav class="shrink-0 bg-white/95 dark:bg-studio-900/95 backdrop-blur-xl border-t border-slate-200/80 dark:border-slate-800/80 px-2 py-1.5 z-30">
+        <div class="max-w-md mx-auto grid grid-cols-4 gap-1">
+            <button onclick="switchTab('chords')" id="tab-btn-chords" 
+                class="flex flex-col items-center justify-center py-1.5 rounded-xl text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 font-bold transition">
+                <i class="fa-solid fa-table-cells-large text-sm mb-0.5"></i>
+                <span data-i18n="tabChords" class="text-[10px] tracking-tight">Accordi</span>
+            </button>
+
+            <button onclick="switchTab('groove')" id="tab-btn-groove" 
+                class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-semibold transition">
+                <i class="fa-solid fa-compact-disc text-sm mb-0.5"></i>
+                <span data-i18n="tabGroove" class="text-[10px] tracking-tight">Stile & BPM</span>
+            </button>
+
+            <button onclick="switchTab('mixer')" id="tab-btn-mixer" 
+                class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-semibold transition">
+                <i class="fa-solid fa-sliders text-sm mb-0.5"></i>
+                <span data-i18n="tabMixer" class="text-[10px] tracking-tight">Mixer (5)</span>
+            </button>
+
+            <button onclick="switchTab('metro')" id="tab-btn-metro" 
+                class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-semibold transition">
+                <i class="fa-solid fa-stopwatch text-sm mb-0.5"></i>
+                <span data-i18n="tabMetro" class="text-[10px] tracking-tight">Metronomo</span>
+            </button>
+        </div>
+    </nav>
 
     <!-- Chord Editor Modal (Opened when clicking any bar in the chord grid) -->
     <div id="chord-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
@@ -504,80 +544,92 @@
         const I18N = {
             it: {
                 subtitle: "Generatore di basi musicali realistiche per strumenti solisti",
-                currentChordTitle: "ACCORDO ATTUALE",
+                currentChordTitle: "ACCORDO",
                 nextChordTitle: "PROSSIMO",
-                beatIndicator: "BATTITO / METRONOMO",
+                beatIndicator: "BATTITO",
                 playStart: "AVVIA BASE",
                 playStop: "FERMA BASE",
                 metroOn: "Click: ON",
                 metroOff: "Click: OFF",
-                companionMode: "QUAL È IL TUO STRUMENTO? (OTTIMIZZA MIX E TONALITÀ)",
+                companionMode: "STRUMENTO:",
                 presetFull: "Full Band",
-                presetGuitar: "Chitarra (No Guitar)",
-                presetBass: "Basso (No Bass)",
-                presetTrumpet: "Tromba / Sax (Bb)",
-                presetSaxEb: "Sax Contralto (Eb)",
+                presetGuitar: "Chitarra",
+                presetBass: "Basso",
+                presetTrumpet: "Tromba/Sax (Bb)",
+                presetSaxEb: "Alto Sax (Eb)",
                 genreSection: "GENERE MUSICALE & RITMO",
                 tempoTitle: "TEMPO (BPM)",
                 keySelect: "Tonalità (Key)",
                 progSelect: "Progressione Armonica",
-                chordGridTitle: "GRIGLIA ACCORDI (TOCCA UNA BATTUTA PER MODIFICARLA)",
-                addBar: "Battuta",
-                mixerTitle: "MIXER STRUMENTI (ATTIVA / DISATTIVA)",
-                metroSettingsTitle: "METRONOMO & MASTER STUDIO",
+                chordGridTitle: "GRIGLIA ACCORDI (TOCCA PER MODIFICARE)",
+                addBar: "Bar",
+                mixerTitle: "MIXER STRUMENTI (MUTE / SOLO / TIMBRO)",
+                metroSettingsTitle: "METRONOMO & STUDIO PRACTICE",
                 metroVol: "Volume Click",
                 metroMode: "Suddivisione",
                 swingAmount: "Swing Feel",
                 modalTitle: "Modifica Accordo — Battuta",
                 modalRoot: "Nota Fondamentale (Root)",
                 modalQuality: "Qualità dell'Accordo",
-                scaleLabel: "Scala consigliata:",
-                barLabel: "Battuta",
+                scaleLabel: "Scala:",
+                barLabel: "Bar",
+                tabChords: "Accordi",
+                tabGroove: "Stile & BPM",
+                tabMixer: "Mixer (5)",
+                tabMetro: "Metronomo",
+                transposeGuideTitle: "Trasposizione Display per Strumenti a Fiato",
+                transposeGuideDesc: "L'audio suona sempre nella tonalità reale (Concert Pitch), mentre gli accordi e le scale consigliate si traspongono automaticamente per il tuo strumento.",
                 channels: {
                     drums: { name: "Batteria Studio", desc: "Kick, Snare, Hi-Hat, Ride" },
-                    bass: { name: "Basso", desc: "Finger, Slap o Contrabbasso Walking" },
-                    keys: { name: "Tastiere / Piano", desc: "Fender Rhodes, Grand Piano, Hammond" },
-                    guitar: { name: "Chitarra Ritmica", desc: "Strumming, Funk Chop, Jazz Comp" },
-                    pad: { name: "Fiati & Archi Pad", desc: "Sezione Brass calda / Strings" }
+                    bass: { name: "Basso", desc: "Finger, Slap o Walking" },
+                    keys: { name: "Tastiere / Piano", desc: "Rhodes, Piano, Hammond" },
+                    guitar: { name: "Chitarra Ritmica", desc: "Strum, Funk Chop, Jazz" },
+                    pad: { name: "Fiati & Archi", desc: "Sezione Brass / Strings" }
                 }
             },
             en: {
                 subtitle: "Realistic MIDI backing track generator for solo instruments",
-                currentChordTitle: "CURRENT CHORD",
-                nextChordTitle: "NEXT CHORD",
-                beatIndicator: "BEAT / METRONOME",
+                currentChordTitle: "CHORD",
+                nextChordTitle: "NEXT",
+                beatIndicator: "BEAT",
                 playStart: "PLAY TRACK",
                 playStop: "STOP TRACK",
                 metroOn: "Click: ON",
                 metroOff: "Click: OFF",
-                companionMode: "WHAT IS YOUR INSTRUMENT? (OPTIMIZE MIX & TRANSPOSITION)",
+                companionMode: "INSTRUMENT:",
                 presetFull: "Full Band",
-                presetGuitar: "Guitar (Mute Guitar)",
-                presetBass: "Bass (Mute Bass)",
-                presetTrumpet: "Trumpet / Tenor (Bb)",
+                presetGuitar: "Guitar",
+                presetBass: "Bass",
+                presetTrumpet: "Trumpet/Tenor (Bb)",
                 presetSaxEb: "Alto Sax (Eb)",
                 genreSection: "MUSICAL GENRE & RHYTHM",
                 tempoTitle: "TEMPO (BPM)",
                 keySelect: "Key Center",
                 progSelect: "Chord Progression",
-                chordGridTitle: "CHORD CHART (TAP ANY BAR TO EDIT CHORD)",
-                addBar: "Add Bar",
-                mixerTitle: "INSTRUMENT MIXER (MUTE / SOLO / VOLUME)",
-                metroSettingsTitle: "METRONOME & STUDIO FEEL",
+                chordGridTitle: "CHORD CHART (TAP ANY BAR TO EDIT)",
+                addBar: "Bar",
+                mixerTitle: "INSTRUMENT MIXER (MUTE / SOLO / TIMBRE)",
+                metroSettingsTitle: "METRONOME & STUDIO PRACTICE",
                 metroVol: "Click Volume",
                 metroMode: "Subdivision",
                 swingAmount: "Swing Feel",
                 modalTitle: "Edit Chord — Bar",
                 modalRoot: "Root Note",
                 modalQuality: "Chord Quality",
-                scaleLabel: "Suggested Scale:",
+                scaleLabel: "Scale:",
                 barLabel: "Bar",
+                tabChords: "Chords",
+                tabGroove: "Style & BPM",
+                tabMixer: "Mixer (5)",
+                tabMetro: "Metronome",
+                transposeGuideTitle: "Display Transposition for Wind Players",
+                transposeGuideDesc: "Audio always plays in Concert Pitch while the chord chart and scale suggestions automatically transpose for your horn.",
                 channels: {
                     drums: { name: "Studio Drums", desc: "Kick, Snare, Hi-Hat, Ride" },
-                    bass: { name: "Bass Guitar", desc: "Fingered, Slap or Upright Walking" },
-                    keys: { name: "Keys / Piano", desc: "Fender Rhodes, Grand Piano, Organ" },
-                    guitar: { name: "Rhythm Guitar", desc: "Strumming, Funk Chop, Jazz Comp" },
-                    pad: { name: "Horns & Strings", desc: "Warm Brass Section / Lush Pad" }
+                    bass: { name: "Bass Guitar", desc: "Finger, Slap or Walking" },
+                    keys: { name: "Keys / Piano", desc: "Rhodes, Piano, Organ" },
+                    guitar: { name: "Rhythm Guitar", desc: "Strum, Funk Chop, Jazz" },
+                    pad: { name: "Horns & Strings", desc: "Warm Brass / Lush Pad" }
                 }
             }
         };
@@ -1558,7 +1610,7 @@
             for (let i = 0; i < 4; i++) {
                 const led = document.getElementById(`beat-led-${i}`);
                 if (led) {
-                    led.className = 'h-8 rounded-xl bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-xs text-slate-500 transition-all duration-75';
+                    led.className = 'h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75';
                 }
             }
         }
@@ -1568,66 +1620,29 @@
             const led = document.getElementById(`beat-led-${beatIndex}`);
             if (!led) return;
             if (isCountIn) {
-                led.className = 'h-8 rounded-xl bg-amber-500 text-white shadow-lg shadow-amber-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-xs transition-all duration-75';
+                led.className = 'h-6 rounded-lg bg-amber-500 text-white shadow-md shadow-amber-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             } else if (beatIndex === 0) {
-                led.className = 'h-8 rounded-xl bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-xs transition-all duration-75';
+                led.className = 'h-6 rounded-lg bg-emerald-500 text-white shadow-md shadow-emerald-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             } else {
-                led.className = 'h-8 rounded-xl bg-indigo-500 text-white shadow-md shadow-indigo-500/30 flex items-center justify-center font-mono font-extrabold text-xs transition-all duration-75';
+                led.className = 'h-6 rounded-lg bg-indigo-500 text-white shadow-sm shadow-indigo-500/30 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             }
         }
-
-        function animationLoop() {
-            // 1. Process scheduled UI events synchronized to audioCtx.currentTime
-            if (audioCtx && state.isPlaying) {
-                const now = audioCtx.currentTime;
-                while (uiQueue.length > 0 && uiQueue[0].time <= now + 0.02) {
-                    const ev = uiQueue.shift();
-                    highlightBeatLED(ev.beatIndex, ev.isCountIn);
-                    if (!ev.isCountIn) {
-                        updateHUDDisplay(ev.barIndex);
-                        highlightActiveBarCard(ev.barIndex);
-                    }
-                }
-            }
-
-            // 2. Draw Audio Spectrum Visualizer
-            const canvas = document.getElementById('audio-visualizer');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                const width = canvas.width = canvas.clientWidth;
-                const height = canvas.height = canvas.clientHeight;
-                ctx.clearRect(0, 0, width, height);
-
-                if (analyserNode && state.isPlaying) {
-                    const bufferLength = analyserNode.frequencyBinCount;
-                    const dataArray = new Uint8Array(bufferLength);
-                    analyserNode.getByteFrequencyData(dataArray);
-
-                    const barCount = 24;
-                    const barWidth = (width / barCount) - 2;
-                    for (let i = 0; i < barCount; i++) {
-                        const val = dataArray[i] / 255.0;
-                        const barHeight = Math.max(3, val * height);
-                        const x = i * (barWidth + 2);
-                        const y = height - barHeight;
-
-                        ctx.fillStyle = i % 2 === 0 ? '#6366f1' : '#06b6d4';
-                        ctx.beginPath();
-                        ctx.roundRect(x, y, barWidth, barHeight, 2);
-                        ctx.fill();
-                    }
+        function switchTab(tabId) {
+            const tabs = ['chords', 'groove', 'mixer', 'metro'];
+            tabs.forEach(t => {
+                const panel = document.getElementById(`tab-panel-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (!panel || !btn) return;
+                if (t === tabId) {
+                    panel.classList.remove('hidden');
+                    panel.classList.add('flex');
+                    btn.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 font-bold transition';
                 } else {
-                    // Idle subtle wave line
-                    ctx.strokeStyle = 'rgba(99, 102, 241, 0.25)';
-                    ctx.lineWidth = 1.5;
-                    ctx.beginPath();
-                    ctx.moveTo(0, height / 2);
-                    ctx.lineTo(width, height / 2);
-                    ctx.stroke();
+                    panel.classList.add('hidden');
+                    panel.classList.remove('flex');
+                    btn.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-semibold transition';
                 }
-            }
-
-            requestAnimationFrame(animationLoop);
+            });
         }
 
         function renderGenreButtons() {
@@ -1637,18 +1652,18 @@
                 const label = state.lang === 'it' ? g.nameIt : g.nameEn;
                 return `
                     <button onclick="selectGenre('${g.id}')"
-                        class="p-2.5 rounded-xl border text-left transition flex items-center gap-2.5 ${
+                        class="p-2 rounded-xl border text-left transition flex items-center gap-2 ${
                             active
                                 ? 'bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-500/25'
                                 : 'bg-slate-50 dark:bg-studio-800/90 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
                         }">
-                        <div class="w-8 h-8 rounded-lg flex items-center justify-center ${
+                        <div class="w-7 h-7 rounded-lg shrink-0 flex items-center justify-center ${
                             active ? 'bg-white/20 text-white' : 'bg-indigo-500/10 text-indigo-500'
                         }">
-                            <i class="fa-solid ${g.icon} text-sm"></i>
+                            <i class="fa-solid ${g.icon} text-xs"></i>
                         </div>
                         <div class="overflow-hidden">
-                            <div class="font-bold text-xs truncate">${label}</div>
+                            <div class="font-bold text-xs truncate leading-tight">${label}</div>
                             <div class="text-[10px] font-mono ${active ? 'text-indigo-200' : 'text-slate-400'}">${g.defaultBpm} BPM</div>
                         </div>
                     </button>
@@ -1680,26 +1695,113 @@
 
         function renderChordBarsGrid() {
             const container = document.getElementById('chord-bars-grid');
+            const isCompact = state.bars.length > 8;
+            container.className = `flex-1 min-h-0 grid ${isCompact ? 'grid-cols-4 gap-1.5' : 'grid-cols-2 sm:grid-cols-4 gap-2'} content-start overflow-y-auto no-scrollbar`;
+
             container.innerHTML = state.bars.map((bar, idx) => {
                 const isActive = state.isPlaying && !state.isCountInPhase && idx === state.currentBarIndex;
                 const chordName = formatChordDisplay(bar.root, bar.quality);
                 const notesStr = getChordNotesNames(bar.root, bar.quality);
+                const padClass = isCompact ? 'p-2' : 'p-2.5 sm:p-3';
+                const titleSize = isCompact ? 'text-sm sm:text-base' : 'text-base sm:text-xl';
+
                 return `
                     <div id="chord-bar-card-${idx}" onclick="openChordModal(${idx})"
-                        class="cursor-pointer rounded-xl p-3 border transition relative group ${
+                        class="cursor-pointer rounded-xl ${padClass} border transition relative group ${
                             isActive
                                 ? 'chord-active bg-indigo-600/15 dark:bg-indigo-500/20 border-indigo-500 ring-2 ring-indigo-500/40'
                                 : 'bg-slate-50 dark:bg-studio-800/80 border-slate-200 dark:border-slate-700/80 hover:border-indigo-400'
                         }">
-                        <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-0.5">
+                        <div class="flex items-center justify-between text-[9px] font-mono text-slate-400 leading-none mb-0.5">
                             <span>#${idx + 1}</span>
-                            <i class="fa-solid fa-pen text-[9px] opacity-40 group-hover:opacity-100 text-indigo-500 transition"></i>
+                            <i class="fa-solid fa-pen text-[8px] opacity-40 group-hover:opacity-100 text-indigo-500 transition"></i>
                         </div>
-                        <div class="font-mono font-extrabold text-lg sm:text-xl text-slate-800 dark:text-white tracking-tight">
+                        <div class="font-mono font-extrabold ${titleSize} text-slate-800 dark:text-white tracking-tight leading-tight">
                             ${chordName}
                         </div>
-                        <div class="text-[10px] font-mono text-slate-400 dark:text-slate-400 truncate mt-0.5">
+                        <div class="text-[9px] font-mono text-slate-400 dark:text-slate-400 truncate mt-0.5 leading-none">
                             ${notesStr}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function highlightActiveBarCard(activeIdx) {
+            const isCompact = state.bars.length > 8;
+            const padClass = isCompact ? 'p-2' : 'p-2.5 sm:p-3';
+            state.bars.forEach((_, idx) => {
+                const card = document.getElementById(`chord-bar-card-${idx}`);
+                if (!card) return;
+                if (idx === activeIdx) {
+                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group chord-active bg-indigo-600/15 dark:bg-indigo-500/20 border-indigo-500 ring-2 ring-indigo-500/40`;
+                } else {
+                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group bg-slate-50 dark:bg-studio-800/80 border-slate-200 dark:border-slate-700/80 hover:border-indigo-400`;
+                }
+            });
+        }
+
+        function renderMixerChannels() {
+            const container = document.getElementById('mixer-channels-container');
+            const t = I18N[state.lang].channels;
+
+            container.innerHTML = state.channels.map(ch => {
+                const info = t[ch.id];
+                const audible = isChannelAudible(ch.id);
+                const volPercent = Math.round(ch.volume * 100);
+                return `
+                    <div class="p-2 rounded-xl border transition ${
+                        audible
+                            ? 'bg-slate-50 dark:bg-studio-800/90 border-slate-200 dark:border-slate-700/80'
+                            : 'bg-slate-100/60 dark:bg-studio-950/60 border-slate-200/50 dark:border-slate-800/50 opacity-60'
+                    }">
+                        <div class="flex items-center justify-between gap-1.5 mb-1">
+                            <!-- Instrument Toggle Button -->
+                            <button onclick="toggleChannelMute('${ch.id}')" class="flex items-center gap-2 text-left min-w-0 flex-1">
+                                <div class="w-7 h-7 rounded-lg shrink-0 flex items-center justify-center transition ${
+                                    audible ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200 dark:bg-studio-800 text-slate-400'
+                                }">
+                                    <i class="fa-solid ${ch.icon} text-[11px]"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-xs leading-tight flex items-center gap-1 truncate">
+                                        <span class="truncate">${info.name}</span>
+                                        <span class="text-[9px] font-mono px-1 rounded ${
+                                            audible ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/15 text-rose-500'
+                                        }">${audible ? 'ON' : 'MUTE'}</span>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- Timbre Variant Selector + Mute / Solo Buttons -->
+                            <div class="flex items-center gap-1 shrink-0">
+                                <select onchange="setChannelVariant('${ch.id}', this.value)"
+                                    class="rounded-lg bg-white dark:bg-studio-900 border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 text-[10px] font-semibold focus:outline-none">
+                                    ${ch.variants.map((v, i) => `<option value="${i}" ${ch.variant === i ? 'selected' : ''}>${v}</option>`).join('')}
+                                </select>
+
+                                <button onclick="toggleChannelMute('${ch.id}')"
+                                    class="w-6 h-6 rounded-lg font-mono font-bold text-[10px] transition ${
+                                        ch.muted
+                                            ? 'bg-rose-500 text-white shadow-sm'
+                                            : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
+                                    }" title="Mute">M</button>
+
+                                <button onclick="toggleChannelSolo('${ch.id}')"
+                                    class="w-6 h-6 rounded-lg font-mono font-bold text-[10px] transition ${
+                                        ch.solo
+                                            ? 'bg-amber-500 text-white shadow-sm'
+                                            : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
+                                    }" title="Solo">S</button>
+                            </div>
+                        </div>
+
+                        <!-- Volume Slider Row -->
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-volume-low text-[10px] text-slate-400"></i>
+                            <input type="range" min="0" max="100" value="${volPercent}"
+                                oninput="setChannelVolume('${ch.id}', this.value)" class="flex-1">
+                            <span id="vol-label-${ch.id}" class="text-[10px] font-mono w-7 text-right text-slate-500">${volPercent}%</span>
                         </div>
                     </div>
                 `;
@@ -1807,11 +1909,11 @@
         function setGrooveVariation(varCode) {
             state.grooveVariation = varCode;
             document.getElementById('var-btn-A').className = varCode === 'A'
-                ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white transition'
-                : 'px-2.5 py-1 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
+                ? 'px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition'
+                : 'px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
             document.getElementById('var-btn-B').className = varCode === 'B'
-                ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white transition'
-                : 'px-2.5 py-1 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
+                ? 'px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition'
+                : 'px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
         }
 
         function triggerDrumFill() {
@@ -1916,11 +2018,11 @@
         function applyCompanionPreset(presetKey) {
             // Update companion preset button styles
             document.querySelectorAll('.companion-btn').forEach(btn => {
-                btn.className = 'companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-studio-700 transition';
+                btn.className = 'companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition';
             });
             const activeBtn = document.getElementById(`preset-btn-${presetKey}`);
             if (activeBtn) {
-                activeBtn.className = 'companion-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition';
+                activeBtn.className = 'companion-btn px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition';
             }
 
             // Reset channels first
@@ -2124,12 +2226,12 @@
             const playLbl = document.getElementById('lbl-play-btn');
 
             if (state.isPlaying) {
-                playBtn.className = 'flex-1 py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 active:scale-[0.98] shadow-lg shadow-rose-600/30 transition flex items-center justify-center gap-2.5';
-                playIcon.className = 'fa-solid fa-stop text-base';
+                playBtn.className = 'flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 active:scale-[0.98] shadow-md shadow-rose-600/25 transition flex items-center justify-center gap-2';
+                playIcon.className = 'fa-solid fa-stop text-xs';
                 playLbl.textContent = t.playStop;
             } else {
-                playBtn.className = 'flex-1 py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2.5';
-                playIcon.className = 'fa-solid fa-play text-base';
+                playBtn.className = 'flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-2';
+                playIcon.className = 'fa-solid fa-play text-xs';
                 playLbl.textContent = t.playStart;
             }
 
@@ -2137,12 +2239,12 @@
             const metroLbl = document.getElementById('lbl-metro-btn');
             const metroPill = document.getElementById('metro-status-pill');
             if (state.metronomeEnabled) {
-                metroBtn.className = 'flex-1 py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1.5 bg-amber-500/20 border-amber-500/40 text-amber-600 dark:text-amber-300';
+                metroBtn.className = 'py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-amber-500/20 border-amber-500/40 text-amber-600 dark:text-amber-300';
                 metroLbl.textContent = t.metroOn;
                 metroPill.textContent = 'ON';
                 metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-500 font-bold';
             } else {
-                metroBtn.className = 'flex-1 py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300';
+                metroBtn.className = 'py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300';
                 metroLbl.textContent = t.metroOff;
                 metroPill.textContent = 'OFF';
                 metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500';
@@ -2150,8 +2252,8 @@
 
             const countInBtn = document.getElementById('btn-countin-toggle');
             countInBtn.className = state.countInEnabled
-                ? 'py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300'
-                : 'py-2.5 px-3 rounded-xl font-bold text-xs border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-400';
+                ? 'py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300'
+                : 'py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-400';
         }
 
         window.onload = function () {
