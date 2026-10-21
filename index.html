@@ -1,3 +1,4 @@
+<html>
 <!DOCTYPE html>
 <html lang="it" class="dark">
 <head>
@@ -54,7 +55,6 @@
         body {
             overscroll-behavior-y: none;
         }
-        /* Custom sleek range sliders */
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
@@ -84,7 +84,6 @@
         input[type="range"]::-webkit-slider-thumb:active {
             transform: scale(1.2);
         }
-        /* Active chord cell pulse */
         @keyframes chordPulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.45); }
             50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0); }
@@ -92,7 +91,6 @@
         .chord-active {
             animation: chordPulse 1.2s infinite;
         }
-        /* Hide scrollbars for horizontal pill containers */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -106,19 +104,18 @@
 <body class="bg-studio-50 dark:bg-studio-950 text-slate-800 dark:text-slate-100 font-sans h-[100dvh] max-h-[100dvh] w-screen overflow-hidden flex flex-col transition-colors duration-300">
 
     <!-- Compact Top Header Bar -->
-    <header class="shrink-0 backdrop-blur-xl bg-white/90 dark:bg-studio-900/90 border-b border-slate-200/80 dark:border-slate-800/80 px-3 sm:px-5 py-2 z-20">
-        <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
-            <!-- Brand & Status -->
+    <header class="shrink-0 backdrop-blur-xl bg-white/90 dark:bg-studio-900/90 border-b border-slate-200/80 dark:border-slate-800/80 px-2.5 sm:px-4 py-2 z-20">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-1.5">
             <div class="flex items-center gap-2 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 shrink-0">
                     <i class="fa-solid fa-wave-square text-sm"></i>
                 </div>
                 <div class="min-w-0">
-                    <div class="flex items-center gap-1.5">
+                    <div class="flex items-center gap-1">
                         <h1 class="font-extrabold text-sm sm:text-base tracking-tight bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300 bg-clip-text text-transparent truncate">
                             GrooveStudio
                         </h1>
-                        <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-bold border border-indigo-500/20">
+                        <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-bold border border-indigo-500/20 shrink-0">
                             PRO
                         </span>
                     </div>
@@ -128,35 +125,30 @@
                 </div>
             </div>
 
-            <!-- Right Actions: Wake Lock, Instrument Transposition, Language, Theme -->
-            <div class="flex items-center gap-1.5 shrink-0">
-                <!-- Keep Screen Awake (Wake Lock) Badge -->
+            <div class="flex items-center gap-1 shrink-0">
                 <button id="btn-wakelock" onclick="toggleWakeLock()" 
-                    class="px-2 py-1 rounded-lg text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition flex items-center gap-1.5"
+                    class="px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition flex items-center gap-1 shrink-0"
                     title="Forza lo schermo sempre acceso su Android e iPhone">
                     <span id="dot-wakelock" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <i id="icon-wakelock" class="fa-solid fa-mobile-screen-button text-[10px]"></i>
                     <span id="lbl-wakelock-badge" class="hidden xs:inline sm:inline">Schermo: ON</span>
                 </button>
 
-                <!-- Transposition Quick Badge for Horn/Guitar players -->
                 <button id="btn-transpose-mode" onclick="cycleTranspositionDisplay()" 
-                    class="px-2 py-1 rounded-lg text-[11px] font-mono font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25 hover:bg-amber-500/20 transition flex items-center gap-1"
+                    class="px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25 hover:bg-amber-500/20 transition flex items-center gap-1 shrink-0"
                     title="Transposition for Bb Trumpet / Eb Sax">
                     <i class="fa-solid fa-music text-[9px]"></i>
-                    <span id="lbl-transpose-badge">Concert (C)</span>
+                    <span id="lbl-transpose-badge" class="truncate max-w-[85px] sm:max-w-none">Concert (C)</span>
                 </button>
 
-                <!-- Language Switcher (IT / EN) -->
                 <button id="btn-lang" onclick="toggleLanguage()" 
-                    class="px-2 py-1 rounded-lg text-[11px] font-bold bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1">
+                    class="px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1 shrink-0">
                     <i class="fa-solid fa-globe text-indigo-500 text-[10px]"></i>
                     <span id="lbl-lang-code">IT</span>
                 </button>
 
-                <!-- Dark / Light Mode Toggle -->
                 <button id="btn-theme" onclick="toggleTheme()" 
-                    class="w-7 h-7 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition text-slate-700 dark:text-amber-300"
+                    class="w-7 h-7 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 border border-slate-200 dark:border-slate-700 transition text-slate-700 dark:text-amber-300 shrink-0"
                     aria-label="Toggle Dark Mode">
                     <i id="icon-theme" class="fa-solid fa-sun text-xs"></i>
                 </button>
@@ -164,20 +156,18 @@
         </div>
     </header>
 
-    <!-- Persistent Top HUD & Transport Bar (Always visible across all tabs) -->
-    <section class="shrink-0 max-w-5xl w-full mx-auto px-2.5 sm:px-5 pt-2 pb-1">
-        <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 shadow-md p-2.5 sm:p-3 space-y-2">
+    <!-- Persistent Top HUD & Transport Bar -->
+    <section class="shrink-0 max-w-5xl w-full mx-auto px-2 sm:px-4 pt-1.5 pb-1">
+        <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 shadow-md p-2 sm:p-2.5 space-y-1.5">
             
-            <!-- Top HUD Row: Current Chord, Next Chord & Beat LEDs -->
-            <div class="grid grid-cols-12 gap-2 items-center">
-                <!-- Current & Next Chord Box -->
-                <div class="col-span-7 sm:col-span-6 flex items-center justify-between bg-slate-50 dark:bg-studio-950/90 px-2.5 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80">
-                    <div class="min-w-0">
+            <div class="grid grid-cols-12 gap-1.5 items-center">
+                <div class="col-span-7 sm:col-span-6 flex items-center justify-between bg-slate-50 dark:bg-studio-950/90 px-2 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80 min-w-0">
+                    <div class="min-w-0 flex-1">
                         <span id="lbl-current-chord-title" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block leading-tight">
                             ACCORDO
                         </span>
-                        <div class="flex items-baseline gap-1.5">
-                            <span id="hud-current-chord" class="font-mono font-extrabold text-xl sm:text-2xl text-indigo-600 dark:text-indigo-400 tracking-tight leading-none">
+                        <div class="flex items-baseline gap-1.5 min-w-0">
+                            <span id="hud-current-chord" class="font-mono font-extrabold text-lg sm:text-2xl text-indigo-600 dark:text-indigo-400 tracking-tight leading-none truncate">
                                 Cmaj7
                             </span>
                             <span id="hud-chord-notes" class="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate">
@@ -189,22 +179,21 @@
                         </span>
                     </div>
 
-                    <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-2.5 shrink-0">
+                    <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-2 shrink-0">
                         <span id="lbl-next-chord-title" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block leading-tight">
                             PROSSIMO
                         </span>
-                        <span id="hud-next-chord" class="font-mono font-bold text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-tight block">
+                        <span id="hud-next-chord" class="font-mono font-bold text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-tight block truncate max-w-[65px]">
                             Am7
                         </span>
-                        <span id="hud-bar-counter" class="text-[9px] font-mono text-slate-400 block">
+                        <span id="hud-bar-counter" class="text-[9px] font-mono text-slate-400 block truncate">
                             Bar 1/4
                         </span>
                     </div>
                 </div>
 
-                <!-- Beat LEDs & Mini Spectrum Visualizer -->
-                <div class="col-span-5 sm:col-span-6 flex flex-col justify-between bg-slate-50 dark:bg-studio-950/90 px-2.5 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80 h-full">
-                    <div class="flex items-center justify-between mb-1">
+                <div class="col-span-5 sm:col-span-6 flex flex-col justify-between bg-slate-50 dark:bg-studio-950/90 px-2 py-1.5 rounded-xl border border-slate-200/70 dark:border-slate-800/80 h-full min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
                         <span id="lbl-beat-indicator" class="text-[9px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 truncate">
                             BATTITO
                         </span>
@@ -212,45 +201,41 @@
                     </div>
 
                     <div id="beat-leds-container" class="grid grid-cols-4 gap-1">
-                        <div id="beat-led-0" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">1</div>
-                        <div id="beat-led-1" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">2</div>
-                        <div id="beat-led-2" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">3</div>
-                        <div id="beat-led-3" class="h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">4</div>
+                        <div id="beat-led-0" class="h-5 sm:h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">1</div>
+                        <div id="beat-led-1" class="h-5 sm:h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">2</div>
+                        <div id="beat-led-2" class="h-5 sm:h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">3</div>
+                        <div id="beat-led-3" class="h-5 sm:h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75">4</div>
                     </div>
 
-                    <div class="w-full h-4 mt-1 rounded overflow-hidden bg-slate-200/60 dark:bg-studio-900">
+                    <div class="w-full h-3.5 mt-0.5 rounded overflow-hidden bg-slate-200/60 dark:bg-studio-900">
                         <canvas id="audio-visualizer" class="w-full h-full block"></canvas>
                     </div>
                 </div>
             </div>
 
-            <!-- Second HUD Row: Play/Stop + Quick Groove A/B/Fill + Metronome Click -->
             <div class="flex items-center gap-1.5">
                 <button id="btn-play-toggle" onclick="togglePlayback()" 
-                    class="flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    <i id="icon-play" class="fa-solid fa-play text-xs"></i>
-                    <span id="lbl-play-btn">AVVIA BASE</span>
+                    class="flex-1 py-2 px-2.5 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-1.5 truncate">
+                    <i id="icon-play" class="fa-solid fa-play text-xs shrink-0"></i>
+                    <span id="lbl-play-btn" class="truncate">AVVIA BASE</span>
                 </button>
 
-                <!-- Quick Groove A / B / Fill Bar -->
-                <div class="flex items-center gap-0.5 bg-slate-100 dark:bg-studio-950 p-0.5 rounded-xl border border-slate-200 dark:border-slate-800">
-                    <button onclick="setGrooveVariation('A')" id="var-btn-A" class="px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition">A</button>
-                    <button onclick="setGrooveVariation('B')" id="var-btn-B" class="px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">B</button>
-                    <button onclick="triggerDrumFill()" id="btn-drum-fill" class="px-2 py-1.5 rounded-lg text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-500/15 transition" title="Drum Fill">
+                <div class="flex items-center gap-0.5 bg-slate-100 dark:bg-studio-950 p-0.5 rounded-xl border border-slate-200 dark:border-slate-800 shrink-0">
+                    <button onclick="setGrooveVariation('A')" id="var-btn-A" class="px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold bg-indigo-600 text-white transition">A</button>
+                    <button onclick="setGrooveVariation('B')" id="var-btn-B" class="px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">B</button>
+                    <button onclick="triggerDrumFill()" id="btn-drum-fill" class="px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-500/15 transition" title="Drum Fill">
                         <i class="fa-solid fa-drum"></i>
                     </button>
                 </div>
 
-                <!-- Metronome Click Quick Toggle -->
                 <button id="btn-metro-toggle" onclick="toggleMetronome()" 
-                    class="py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                    class="py-2 px-2 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shrink-0">
                     <i class="fa-solid fa-stopwatch text-amber-500"></i>
                     <span id="lbl-metro-btn" class="hidden xs:inline sm:inline">Click: OFF</span>
                 </button>
 
-                <!-- Count-in Quick Toggle -->
                 <button id="btn-countin-toggle" onclick="toggleCountIn()" 
-                    class="py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300"
+                    class="py-2 px-1.5 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300 shrink-0"
                     title="Count-in 1 battuta prima di iniziare">
                     <i class="fa-solid fa-1"></i>
                     <span id="lbl-countin-btn" class="hidden sm:inline">Count-In</span>
@@ -259,32 +244,29 @@
         </div>
     </section>
 
-    <!-- Main Tabbed Workspace (Fits remaining viewport height without page scroll) -->
-    <main class="flex-1 min-h-0 max-w-5xl w-full mx-auto px-2.5 sm:px-5 py-1.5 flex flex-col overflow-hidden">
+    <!-- Main Tabbed Workspace -->
+    <main class="flex-1 min-h-0 max-w-5xl w-full mx-auto px-2 sm:px-4 py-1.5 flex flex-col overflow-hidden">
 
-        <!-- TAB 1: CHORDS & HARMONY (Default Active Tab) -->
-        <div id="tab-panel-chords" class="tab-panel flex-1 min-h-0 flex flex-col gap-2 overflow-y-auto no-scrollbar">
+        <!-- TAB 1: CHORDS & HARMONY -->
+        <div id="tab-panel-chords" class="tab-panel flex-1 min-h-0 flex flex-col gap-1.5 overflow-y-auto no-scrollbar">
             
-            <!-- Key & Progression Selector + Companion Instrument Bar -->
-            <div class="shrink-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3 shadow-sm space-y-2">
-                <!-- Genre, Key & Progression Row -->
-                <div class="grid grid-cols-12 gap-1.5 sm:gap-2">
-                    <div class="col-span-4 sm:col-span-4">
-                        <label id="lbl-genre-quick" class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
+            <div class="shrink-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2 sm:p-2.5 shadow-sm space-y-1.5">
+                <div class="grid grid-cols-12 gap-1 sm:gap-1.5">
+                    <div class="col-span-4 sm:col-span-3">
+                        <label id="lbl-genre-quick" class="block text-[9px] sm:text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
                             Genere (Style)
                         </label>
                         <select id="select-genre" onchange="selectGenre(this.value)" 
-                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <!-- Populated dynamically -->
+                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-1.5 py-1.5 text-[11px] font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate">
                         </select>
                     </div>
 
                     <div class="col-span-3 sm:col-span-2">
-                        <label id="lbl-key-select" class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
+                        <label id="lbl-key-select" class="block text-[9px] sm:text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
                             Tonalità (Key)
                         </label>
                         <select id="select-key" onchange="onKeyOrProgressionChange()" 
-                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-1.5 py-1.5 text-[11px] font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate">
                             <option value="0">C (Do)</option>
                             <option value="1">Db / C#</option>
                             <option value="2">D (Re)</option>
@@ -300,107 +282,99 @@
                         </select>
                     </div>
 
-                    <div class="col-span-5 sm:col-span-6">
-                        <label id="lbl-prog-select" class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
+                    <div class="col-span-5 sm:col-span-7">
+                        <label id="lbl-prog-select" class="block text-[9px] sm:text-[10px] font-bold uppercase text-slate-400 mb-0.5 truncate">
                             Progressione Armonica
                         </label>
                         <select id="select-progression" onchange="onKeyOrProgressionChange()" 
-                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2.5 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <!-- Populated dynamically -->
+                            class="w-full rounded-xl bg-slate-100 dark:bg-studio-800 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-[11px] font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate">
                         </select>
                     </div>
                 </div>
 
-                <!-- Quick Solo Instrument Mode Pills -->
-                <div class="flex items-center gap-1.5 pt-1 border-t border-slate-100 dark:border-slate-800/80 overflow-x-auto no-scrollbar">
+                <div class="flex items-center gap-1 pt-1 border-t border-slate-100 dark:border-slate-800/80 overflow-x-auto no-scrollbar">
                     <span id="lbl-companion-mode" class="text-[9px] font-bold uppercase text-slate-400 shrink-0 hidden sm:inline">
                         SOLISTA:
                     </span>
-                    <button onclick="applyCompanionPreset('full')" id="preset-btn-full" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition">
+                    <button onclick="applyCompanionPreset('full')" id="preset-btn-full" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition">
                         <i class="fa-solid fa-users mr-1"></i><span data-i18n="presetFull">Full Band</span>
                     </button>
-                    <button onclick="applyCompanionPreset('guitar')" id="preset-btn-guitar" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                    <button onclick="applyCompanionPreset('guitar')" id="preset-btn-guitar" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
                         <i class="fa-solid fa-guitar mr-1 text-amber-500"></i><span data-i18n="presetGuitar">Chitarra</span>
                     </button>
-                    <button onclick="applyCompanionPreset('bass')" id="preset-btn-bass" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                    <button onclick="applyCompanionPreset('bass')" id="preset-btn-bass" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
                         <i class="fa-solid fa-bolt mr-1 text-emerald-500"></i><span data-i18n="presetBass">Basso</span>
                     </button>
-                    <button onclick="applyCompanionPreset('keys')" id="preset-btn-keys" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                    <button onclick="applyCompanionPreset('keys')" id="preset-btn-keys" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
                         <i class="fa-solid fa-keyboard mr-1 text-indigo-400"></i><span data-i18n="presetKeys">Piano/Keys</span>
                     </button>
-                    <button onclick="applyCompanionPreset('drums')" id="preset-btn-drums" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                    <button onclick="applyCompanionPreset('drums')" id="preset-btn-drums" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
                         <i class="fa-solid fa-drum mr-1 text-rose-500"></i><span data-i18n="presetDrums">Drumless</span>
                     </button>
-                    <button onclick="applyCompanionPreset('trumpet')" id="preset-btn-trumpet" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
-                        <i class="fa-solid fa-bullhorn mr-1 text-rose-400"></i><span data-i18n="presetTrumpet">Tromba/Tenor (Bb)</span>
+                    <button onclick="applyCompanionPreset('trumpet')" id="preset-btn-trumpet" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-bullhorn mr-1 text-rose-400"></i><span data-i18n="presetTrumpet">Tromba (Bb)</span>
                     </button>
-                    <button onclick="applyCompanionPreset('sax_eb')" id="preset-btn-sax_eb" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                    <button onclick="applyCompanionPreset('sax_eb')" id="preset-btn-sax_eb" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
                         <i class="fa-solid fa-wind mr-1 text-cyan-500"></i><span data-i18n="presetSaxEb">Alto Sax (Eb)</span>
                     </button>
-                    <button onclick="applyCompanionPreset('violin')" id="preset-btn-violin" class="companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
-                        <i class="fa-solid fa-music mr-1 text-purple-400"></i><span data-i18n="presetViolin">Violino/Flauto (C)</span>
+                    <button onclick="applyCompanionPreset('violin')" id="preset-btn-violin" class="companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition">
+                        <i class="fa-solid fa-music mr-1 text-purple-400"></i><span data-i18n="presetViolin">Violino (C)</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Interactive Chord Chart Grid Card -->
-            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3.5 shadow-sm flex flex-col">
-                <div class="shrink-0 flex items-center justify-between mb-2">
-                    <h2 class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
+            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2 sm:p-3 shadow-sm flex flex-col">
+                <div class="shrink-0 flex items-center justify-between mb-1.5">
+                    <h2 class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
                         <i class="fa-solid fa-table-cells-large text-emerald-500"></i>
                         <span id="lbl-chord-grid-title" class="truncate">GRIGLIA ACCORDI (TOCCA PER MODIFICARE)</span>
                     </h2>
                     <div class="flex items-center gap-1 shrink-0">
-                        <button onclick="addChordBar()" class="px-2 py-1 rounded-lg text-[11px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 hover:bg-emerald-500/25 transition">
+                        <button onclick="addChordBar()" class="px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 hover:bg-emerald-500/25 transition">
                             <i class="fa-solid fa-plus mr-0.5"></i><span id="lbl-add-bar">Bar</span>
                         </button>
-                        <button onclick="removeChordBar()" class="px-2 py-1 rounded-lg text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/25 hover:bg-rose-500/25 transition">
+                        <button onclick="removeChordBar()" class="px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/25 hover:bg-rose-500/25 transition">
                             <i class="fa-solid fa-minus"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Dynamic Chord Bars Grid (Auto-fits 4 to 12 bars cleanly) -->
-                <div id="chord-bars-grid" class="flex-1 min-h-0 grid grid-cols-3 sm:grid-cols-4 gap-2 content-start overflow-y-auto no-scrollbar">
-                    <!-- Populated by JS -->
+                <div id="chord-bars-grid" class="flex-1 min-h-0 grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2 content-start overflow-y-auto no-scrollbar">
                 </div>
             </div>
         </div>
 
         <!-- TAB 2: GROOVE, GENRE & TEMPO -->
-        <div id="tab-panel-groove" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
+        <div id="tab-panel-groove" class="tab-panel hidden flex-1 min-h-0 flex-col gap-1.5 overflow-y-auto no-scrollbar">
             
-            <!-- Musical Genre & Rhythm Grid (16 Genres in compact 4x4 grid) -->
-            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2 sm:p-3 shadow-sm space-y-1.5">
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2 sm:p-2.5 shadow-sm space-y-1.5">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                    <h2 class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
                         <i class="fa-solid fa-compact-disc text-indigo-500"></i>
-                        <span id="lbl-genre-section">GENERE MUSICALE & RITMO (16 STILI)</span>
+                        <span id="lbl-genre-section" class="truncate">GENERE MUSICALE & RITMO (20+ STILI)</span>
                     </h2>
                 </div>
 
-                <div id="genre-grid" class="grid grid-cols-4 gap-1 sm:gap-1.5">
-                    <!-- Populated dynamically by JS -->
+                <div id="genre-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-1 sm:gap-1.5">
                 </div>
             </div>
 
-            <!-- Tempo (BPM) & Swing Feel Card -->
-            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3 shadow-sm space-y-2.5">
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3 shadow-sm space-y-2">
                 <div>
-                    <div class="flex items-center justify-between mb-1.5">
-                        <label for="tempo-slider" class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="tempo-slider" class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
                             <i class="fa-solid fa-gauge-high text-cyan-500"></i>
                             <span id="lbl-tempo-title">TEMPO (BPM)</span>
                         </label>
-                        <div class="flex items-center gap-1">
-                            <button onclick="adjustTempo(-5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-5</button>
-                            <button onclick="adjustTempo(-1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">-1</button>
-                            <span id="tempo-display" class="font-mono font-extrabold text-base px-2.5 py-0.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                        <div class="flex items-center gap-0.5 sm:gap-1">
+                            <button onclick="adjustTempo(-5)" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-100 dark:bg-studio-800 font-mono text-xs font-bold">-5</button>
+                            <button onclick="adjustTempo(-1)" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-100 dark:bg-studio-800 font-mono text-xs font-bold">-1</button>
+                            <span id="tempo-display" class="font-mono font-extrabold text-sm sm:text-base px-2 py-0.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                                 110
                             </span>
-                            <button onclick="adjustTempo(1)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+1</button>
-                            <button onclick="adjustTempo(5)" class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-studio-800 hover:bg-slate-200 dark:hover:bg-studio-700 font-mono text-xs font-bold">+5</button>
-                            <button onclick="handleTapTempo()" id="btn-tap-tempo" class="ml-1 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-xs active:scale-95 transition">
+                            <button onclick="adjustTempo(1)" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-100 dark:bg-studio-800 font-mono text-xs font-bold">+1</button>
+                            <button onclick="adjustTempo(5)" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-100 dark:bg-studio-800 font-mono text-xs font-bold">+5</button>
+                            <button onclick="handleTapTempo()" id="btn-tap-tempo" class="ml-0.5 px-2 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-xs active:scale-95 transition">
                                 TAP
                             </button>
                         </div>
@@ -408,8 +382,7 @@
                     <input id="tempo-slider" type="range" min="45" max="220" value="110" oninput="setTempo(this.value)" class="w-full">
                 </div>
 
-                <!-- Swing Feel Control -->
-                <div class="flex items-center justify-between gap-3 pt-2 border-t border-slate-200/60 dark:border-slate-800/70">
+                <div class="flex items-center justify-between gap-3 pt-1.5 border-t border-slate-200/60 dark:border-slate-800/70">
                     <span id="lbl-swing-amount" class="text-xs font-bold text-slate-600 dark:text-slate-300 w-24">Swing Feel</span>
                     <input id="swing-slider" type="range" min="0" max="65" value="0" oninput="updateSwing(this.value)" class="flex-1">
                     <span id="swing-val" class="text-xs font-mono w-9 text-right text-slate-500">0%</span>
@@ -417,41 +390,38 @@
             </div>
         </div>
 
-        <!-- TAB 3: STUDIO MIXER (5 CHANNELS) -->
-        <div id="tab-panel-mixer" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
-            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 sm:p-3.5 shadow-sm flex flex-col">
-                <div class="shrink-0 flex items-center justify-between mb-2">
-                    <h2 class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+        <!-- TAB 3: STUDIO MIXER -->
+        <div id="tab-panel-mixer" class="tab-panel hidden flex-1 min-h-0 flex-col gap-1.5 overflow-y-auto no-scrollbar">
+            <div class="flex-1 min-h-0 rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-2 sm:p-3 shadow-sm flex flex-col">
+                <div class="shrink-0 flex items-center justify-between mb-1.5">
+                    <h2 class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5 truncate">
                         <i class="fa-solid fa-sliders text-purple-500"></i>
-                        <span id="lbl-mixer-title">MIXER STRUMENTI (MUTE / SOLO / TIMBRO)</span>
+                        <span id="lbl-mixer-title" class="truncate">MIXER STRUMENTI (MUTE / SOLO / TIMBRO)</span>
                     </h2>
-                    <button onclick="resetAllChannels()" id="btn-reset-mixer" class="text-xs font-bold text-indigo-500 hover:underline">
+                    <button onclick="resetAllChannels()" id="btn-reset-mixer" class="text-xs font-bold text-indigo-500 hover:underline shrink-0">
                         Reset Mix
                     </button>
                 </div>
 
-                <!-- Compact 5-Channel Mixer Container -->
-                <div id="mixer-channels-container" class="flex-1 min-h-0 space-y-1.5 overflow-y-auto no-scrollbar">
-                    <!-- Populated dynamically by JS -->
+                <div id="mixer-channels-container" class="flex-1 min-h-0 space-y-1 overflow-y-auto no-scrollbar">
                 </div>
             </div>
         </div>
 
         <!-- TAB 4: METRONOME & PRACTICE SETTINGS -->
-        <div id="tab-panel-metro" class="tab-panel hidden flex-1 min-h-0 flex-col gap-2 overflow-y-auto no-scrollbar">
-            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3.5 shadow-sm space-y-4">
+        <div id="tab-panel-metro" class="tab-panel hidden flex-1 min-h-0 flex-col gap-1.5 overflow-y-auto no-scrollbar">
+            <div class="rounded-2xl bg-white dark:bg-studio-900 border border-slate-200/90 dark:border-slate-800/90 p-3 shadow-sm space-y-3">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2 truncate">
                         <i class="fa-solid fa-bell text-amber-500"></i>
-                        <span id="lbl-metro-settings-title">METRONOMO & STUDIO PRACTICE</span>
+                        <span id="lbl-metro-settings-title" class="truncate">METRONOMO & STUDIO PRACTICE</span>
                     </h2>
-                    <span id="metro-status-pill" class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500">
+                    <span id="metro-status-pill" class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500 shrink-0">
                         OFF
                     </span>
                 </div>
 
-                <!-- Metronome Volume & Subdivision -->
-                <div class="space-y-3.5">
+                <div class="space-y-3">
                     <div class="flex items-center justify-between gap-3">
                         <span id="lbl-metro-vol" class="text-xs font-semibold text-slate-600 dark:text-slate-300 w-28">Volume Click</span>
                         <input id="metro-vol-slider" type="range" min="0" max="100" value="75" oninput="updateMetroVolume(this.value)" class="flex-1">
@@ -461,18 +431,17 @@
                     <div class="flex items-center justify-between gap-2">
                         <span id="lbl-metro-mode" class="text-xs font-semibold text-slate-600 dark:text-slate-300">Suddivisione</span>
                         <div class="flex gap-1 bg-slate-100 dark:bg-studio-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <button onclick="setMetroSubdivision(1)" id="metro-sub-1" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white">1/4</button>
-                            <button onclick="setMetroSubdivision(2)" id="metro-sub-2" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">1/8</button>
-                            <button onclick="setMetroSubdivision('offbeat')" id="metro-sub-offbeat" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500">2 & 4 (Jazz)</button>
+                            <button onclick="setMetroSubdivision(1)" id="metro-sub-1" class="px-2 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white">1/4</button>
+                            <button onclick="setMetroSubdivision(2)" id="metro-sub-2" class="px-2 py-1 rounded-lg text-xs font-bold text-slate-500">1/8</button>
+                            <button onclick="setMetroSubdivision('offbeat')" id="metro-sub-offbeat" class="px-2 py-1 rounded-lg text-xs font-bold text-slate-500">2 & 4 (Jazz)</button>
                         </div>
                     </div>
 
-                    <!-- Keep Screen Awake (Anti-Lock) Settings Box -->
                     <div class="p-2.5 rounded-xl bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-between gap-3">
                         <div class="min-w-0">
-                            <div class="text-xs font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                                <i class="fa-solid fa-bolt text-emerald-500"></i>
-                                <span data-i18n="wakeLockTitle">Schermo Sempre Attivo (Anti-Blocco)</span>
+                            <div class="text-xs font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5 truncate">
+                                <i class="fa-solid fa-bolt text-emerald-500 shrink-0"></i>
+                                <span data-i18n="wakeLockTitle" class="truncate">Schermo Sempre Attivo (Anti-Blocco)</span>
                             </div>
                             <p data-i18n="wakeLockDesc" class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                                 Forza il display acceso su Android e iPhone mentre suoni.
@@ -484,26 +453,25 @@
                         </button>
                     </div>
 
-                    <!-- Instrument Transposition Guide Box -->
                     <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-studio-950/90 border border-slate-200/70 dark:border-slate-800/80 space-y-1.5">
                         <div class="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
-                            <i class="fa-solid fa-music text-amber-500"></i>
-                            <span data-i18n="transposeGuideTitle">Trasposizione Display per Strumenti a Fiato</span>
+                            <i class="fa-solid fa-music text-amber-500 shrink-0"></i>
+                            <span data-i18n="transposeGuideTitle" class="truncate">Trasposizione Display per Strumenti a Fiato</span>
                         </div>
                         <p data-i18n="transposeGuideDesc" class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
                             L'audio suona sempre nella tonalità reale (Concert Pitch), mentre gli accordi e le scale consigliate si traspongono automaticamente per il tuo strumento.
                         </p>
                         <div class="grid grid-cols-3 gap-1.5 pt-1">
                             <button onclick="setTranspositionDisplay(0, 'Concert (C)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
-                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition truncate">
                                 Concert (C)
                             </button>
                             <button onclick="setTranspositionDisplay(2, 'Bb (+2 Semitoni)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
-                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
-                                Bb (Tromba/Tenor)
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition truncate">
+                                Bb (Tromba)
                             </button>
                             <button onclick="setTranspositionDisplay(9, 'Eb (+9 Semitoni)'); renderChordBarsGrid(); updateHUDDisplay(state.currentBarIndex);" 
-                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition">
+                                class="py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-slate-200/70 dark:bg-studio-800 hover:bg-indigo-600 hover:text-white transition truncate">
                                 Eb (Alto Sax)
                             </button>
                         </div>
@@ -543,33 +511,29 @@
         </div>
     </nav>
 
-    <!-- Chord Editor Modal (Opened when clicking any bar in the chord grid) -->
+    <!-- Chord Editor Modal -->
     <div id="chord-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-studio-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
             <div class="flex items-center justify-between">
-                <h3 class="font-extrabold text-base flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square text-indigo-500"></i>
-                    <span id="lbl-modal-title">Modifica Accordo — Battuta</span>
+                <h3 class="font-extrabold text-base flex items-center gap-2 truncate">
+                    <i class="fa-solid fa-pen-to-square text-indigo-500 shrink-0"></i>
+                    <span id="lbl-modal-title" class="truncate">Modifica Accordo — Battuta</span>
                     <span id="modal-bar-num" class="font-mono text-indigo-500">#1</span>
                 </h3>
-                <button onclick="closeChordModal()" class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-studio-800 flex items-center justify-center text-slate-500 hover:text-rose-500">
+                <button onclick="closeChordModal()" class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-studio-800 flex items-center justify-center text-slate-500 hover:text-rose-500 shrink-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Root Note Picker -->
             <div>
                 <label id="lbl-modal-root" class="block text-xs font-bold uppercase text-slate-400 mb-2">Nota Fondamentale (Root)</label>
                 <div id="modal-root-grid" class="grid grid-cols-6 gap-1.5">
-                    <!-- Populated by JS -->
                 </div>
             </div>
 
-            <!-- Chord Quality Picker -->
             <div>
                 <label id="lbl-modal-quality" class="block text-xs font-bold uppercase text-slate-400 mb-2">Qualità dell'Accordo</label>
                 <div id="modal-quality-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-1.5">
-                    <!-- Populated by JS -->
                 </div>
             </div>
 
@@ -601,14 +565,14 @@
                 presetBass: "Basso",
                 presetKeys: "Piano/Keys",
                 presetDrums: "Drumless",
-                presetTrumpet: "Tromba/Tenor (Bb)",
+                presetTrumpet: "Tromba (Bb)",
                 presetSaxEb: "Alto Sax (Eb)",
-                presetViolin: "Violino/Flauto (C)",
+                presetViolin: "Violino (C)",
                 genreQuick: "Genere (Style)",
-                genreSection: "GENERE MUSICALE & RITMO (16 STILI)",
+                genreSection: "GENERE MUSICALE & RITMO (24 STILI)",
                 tempoTitle: "TEMPO (BPM)",
                 keySelect: "Tonalità (Key)",
-                progSelect: "Base / Progressione (20 Basi)",
+                progSelect: "Base / Progressione (24 Basi)",
                 chordGridTitle: "GRIGLIA ACCORDI (TOCCA PER MODIFICARE)",
                 addBar: "Bar",
                 mixerTitle: "MIXER 7 STRUMENTI (MUTE / SOLO / TIMBRO)",
@@ -658,14 +622,14 @@
                 presetBass: "Bass",
                 presetKeys: "Piano/Keys",
                 presetDrums: "Drumless",
-                presetTrumpet: "Trumpet/Tenor (Bb)",
+                presetTrumpet: "Trumpet (Bb)",
                 presetSaxEb: "Alto Sax (Eb)",
-                presetViolin: "Violin/Flute (C)",
+                presetViolin: "Violin (C)",
                 genreQuick: "Genre (Style)",
-                genreSection: "MUSICAL GENRE & RHYTHM (16 STYLES)",
+                genreSection: "MUSICAL GENRE & RHYTHM (24 STYLES)",
                 tempoTitle: "TEMPO (BPM)",
                 keySelect: "Key Center",
-                progSelect: "Backing Track / Progression (20 Bases)",
+                progSelect: "Backing Track / Progression (24 Bases)",
                 chordGridTitle: "CHORD CHART (TAP ANY BAR TO EDIT)",
                 addBar: "Bar",
                 mixerTitle: "7-CHANNEL MIXER (MUTE / SOLO / TIMBRE)",
@@ -719,18 +683,12 @@
             'sus4':  { label: '7sus4', intervals: [0, 5, 7, 10], scaleIt: 'Misolidia',            scaleEn: 'Mixolydian' }
         };
 
-        // Predefined harmonic progressions (20 Backing Track Bases)
         const PROGRESSIONS = [
             {
                 id: 'jazz_251',
                 nameIt: '1. Jazz Standard (ii - V7 - Imaj7 - VI7)',
                 nameEn: '1. Jazz Standard (ii - V7 - Imaj7 - VI7)',
-                chords: [
-                    { offset: 2, quality: 'm7' },
-                    { offset: 7, quality: '7' },
-                    { offset: 0, quality: 'maj7' },
-                    { offset: 9, quality: '7alt' }
-                ]
+                chords: [{ offset: 2, quality: 'm7' }, { offset: 7, quality: '7' }, { offset: 0, quality: 'maj7' }, { offset: 9, quality: '7alt' }]
             },
             {
                 id: 'autumn_leaves',
@@ -775,23 +733,13 @@
                 id: 'funk_vamp',
                 nameIt: '6. Funk / Chameleon Dorian Groove (im9 - IV9)',
                 nameEn: '6. Funk / Chameleon Dorian Groove (im9 - IV9)',
-                chords: [
-                    { offset: 0, quality: 'm9' },
-                    { offset: 5, quality: '9' },
-                    { offset: 0, quality: 'm9' },
-                    { offset: 5, quality: '9' }
-                ]
+                chords: [{ offset: 0, quality: 'm9' }, { offset: 5, quality: '9' }, { offset: 0, quality: 'm9' }, { offset: 5, quality: '9' }]
             },
             {
                 id: 'bossa_girl',
                 nameIt: '7. Bossa Nova Rio (Imaj7 - II9 - iim9 - V7)',
                 nameEn: '7. Rio Bossa Nova (Imaj7 - II9 - iim9 - V7)',
-                chords: [
-                    { offset: 0, quality: 'maj7' },
-                    { offset: 2, quality: '9' },
-                    { offset: 2, quality: 'm9' },
-                    { offset: 7, quality: '7' }
-                ]
+                chords: [{ offset: 0, quality: 'maj7' }, { offset: 2, quality: '9' }, { offset: 2, quality: 'm9' }, { offset: 7, quality: '7' }]
             },
             {
                 id: 'samba_festa',
@@ -806,78 +754,43 @@
                 id: 'pop_rock',
                 nameIt: '9. Pop / Rock Anthem (I - V - vi - IV)',
                 nameEn: '9. Pop / Rock Anthem (I - V - vi - IV)',
-                chords: [
-                    { offset: 0, quality: 'maj' },
-                    { offset: 7, quality: 'maj' },
-                    { offset: 9, quality: 'm7' },
-                    { offset: 5, quality: 'maj7' }
-                ]
+                chords: [{ offset: 0, quality: 'maj' }, { offset: 7, quality: 'maj' }, { offset: 9, quality: 'm7' }, { offset: 5, quality: 'maj7' }]
             },
             {
                 id: 'neosoul',
                 nameIt: '10. Neo-Soul / Lo-Fi Chill (IVmaj7 - iii7 - vim9 - II9)',
                 nameEn: '10. Neo-Soul / Lo-Fi Chill (IVmaj7 - iii7 - vim9 - II9)',
-                chords: [
-                    { offset: 5, quality: 'maj7' },
-                    { offset: 4, quality: 'm7' },
-                    { offset: 9, quality: 'm9' },
-                    { offset: 2, quality: '9' }
-                ]
+                chords: [{ offset: 5, quality: 'maj7' }, { offset: 4, quality: 'm7' }, { offset: 9, quality: 'm9' }, { offset: 2, quality: '9' }]
             },
             {
                 id: 'reggae_roots',
                 nameIt: '11. Reggae Roots Jam (im7 - IV - im7 - V7)',
                 nameEn: '11. Reggae Roots Jam (im7 - IV - im7 - V7)',
-                chords: [
-                    { offset: 0, quality: 'm7' },
-                    { offset: 5, quality: 'maj' },
-                    { offset: 0, quality: 'm7' },
-                    { offset: 7, quality: '7' }
-                ]
+                chords: [{ offset: 0, quality: 'm7' }, { offset: 5, quality: 'maj' }, { offset: 0, quality: 'm7' }, { offset: 7, quality: '7' }]
             },
             {
                 id: 'disco_groove',
                 nameIt: '12. 70s Studio 54 Disco (im7 - ivm7 - bVIImaj7 - IV9)',
                 nameEn: '12. 70s Studio 54 Disco (im7 - ivm7 - bVIImaj7 - IV9)',
-                chords: [
-                    { offset: 0, quality: 'm7' },
-                    { offset: 5, quality: 'm7' },
-                    { offset: 10, quality: 'maj7' },
-                    { offset: 5, quality: '9' }
-                ]
+                chords: [{ offset: 0, quality: 'm7' }, { offset: 5, quality: 'm7' }, { offset: 10, quality: 'maj7' }, { offset: 5, quality: '9' }]
             },
             {
                 id: 'minor_swing',
                 nameIt: '13. Gypsy Jazz / Minor Swing (im6 - ivm - V7 - im6)',
                 nameEn: '13. Gypsy Jazz / Minor Swing (im6 - ivm - V7 - im6)',
-                chords: [
-                    { offset: 0, quality: 'm' },
-                    { offset: 5, quality: 'm' },
-                    { offset: 7, quality: '7' },
-                    { offset: 0, quality: '6' }
-                ]
+                chords: [{ offset: 0, quality: 'm' }, { offset: 5, quality: 'm' }, { offset: 7, quality: '7' }, { offset: 0, quality: '6' }]
             },
             {
                 id: 'soul_ballad',
                 nameIt: '14. Motown / Soul Ballad (Imaj7 - iii7 - vim9 - V7sus4)',
                 nameEn: '14. Motown / Soul Ballad (Imaj7 - iii7 - vim9 - V7sus4)',
-                chords: [
-                    { offset: 0, quality: 'maj7' },
-                    { offset: 4, quality: 'm7' },
-                    { offset: 9, quality: 'm9' },
-                    { offset: 7, quality: 'sus4' }
-                ]
+                chords: [{ offset: 0, quality: 'maj7' }, { offset: 4, quality: 'm7' }, { offset: 9, quality: 'm9' }, { offset: 7, quality: 'sus4' }]
             },
             {
                 id: 'afro_vamp',
                 nameIt: '15. Afrobeat / Fela Horn Groove (im9 - IV9 - bVII7)',
                 nameEn: '15. Afrobeat / Fela Horn Groove (im9 - IV9 - bVII7)',
-                chords: [
-                    { offset: 0, quality: 'm9' },
-                    { offset: 0, quality: 'm9' },
-                    { offset: 5, quality: '9' },
-                    { offset: 10, quality: '7' }
-                ]
+                chords: [{ offset: 0, quality: 'm9' }, { offset: 0, quality: 'm9' }, { offset: 5, quality: '9' }, { offset: 10, quality: '7' }]
             },
             {
                 id: 'rhythm_changes',
@@ -901,196 +814,67 @@
                 id: 'andalusian',
                 nameIt: '18. Spanish / Flamenco Cadence (im - bVII7 - bVImaj7 - V7alt)',
                 nameEn: '18. Spanish / Flamenco Cadence (im - bVII7 - bVImaj7 - V7alt)',
-                chords: [
-                    { offset: 0, quality: 'm' },
-                    { offset: 10, quality: '7' },
-                    { offset: 8, quality: 'maj7' },
-                    { offset: 7, quality: '7alt' }
-                ]
+                chords: [{ offset: 0, quality: 'm' }, { offset: 10, quality: '7' }, { offset: 8, quality: 'maj7' }, { offset: 7, quality: '7alt' }]
             },
             {
                 id: 'country_train',
                 nameIt: '19. Nashville Country Train (I - IV - I - V7 - IV - I)',
                 nameEn: '19. Nashville Country Train (I - IV - I - V7 - IV - I)',
-                chords: [
-                    { offset: 0, quality: 'maj' }, { offset: 0, quality: '7' }, { offset: 5, quality: 'maj' }, { offset: 0, quality: 'maj' },
-                    { offset: 7, quality: '7' }, { offset: 5, quality: '7' }, { offset: 0, quality: 'maj' }, { offset: 7, quality: '7' }
-                ]
+                chords: [{ offset: 0, quality: 'maj' }, { offset: 0, quality: '7' }, { offset: 5, quality: 'maj' }, { offset: 0, quality: 'maj' }, { offset: 7, quality: '7' }, { offset: 5, quality: '7' }, { offset: 0, quality: 'maj' }, { offset: 7, quality: '7' }]
             },
             {
                 id: 'synthwave_80s',
                 nameIt: '20. 80s Synthwave Midnight Drive (im7 - bVImaj7 - bIII - bVII)',
                 nameEn: '20. 80s Synthwave Midnight Drive (im7 - bVImaj7 - bIII - bVII)',
-                chords: [
-                    { offset: 0, quality: 'm7' },
-                    { offset: 8, quality: 'maj7' },
-                    { offset: 3, quality: 'maj7' },
-                    { offset: 10, quality: 'maj' }
-                ]
+                chords: [{ offset: 0, quality: 'm7' }, { offset: 8, quality: 'maj7' }, { offset: 3, quality: 'maj7' }, { offset: 10, quality: 'maj' }]
+            },
+            {
+                id: 'cinematic_epic',
+                nameIt: '21. Cinematic Epic Soundtrack (im - bVI - bIII - bVII)',
+                nameEn: '21. Cinematic Epic Soundtrack (im - bVI - bIII - bVII)',
+                chords: [{ offset: 0, quality: 'm' }, { offset: 8, quality: 'maj' }, { offset: 3, quality: 'maj' }, { offset: 10, quality: 'maj' }]
+            },
+            {
+                id: 'zimdancehall_vamp',
+                nameIt: '22. Zimdancehall / Reggae Riddim (im - IV - im - V7)',
+                nameEn: '22. Zimdancehall / Reggae Riddim (im - IV - im - V7)',
+                chords: [{ offset: 0, quality: 'm' }, { offset: 5, quality: 'maj' }, { offset: 0, quality: 'm' }, { offset: 7, quality: '7' }]
+            },
+            {
+                id: 'acoustic_ballad',
+                nameIt: '23. Heartfelt Acoustic Ballad (I - vi - ii - V7)',
+                nameEn: '23. Heartfelt Acoustic Ballad (I - vi - ii - V7)',
+                chords: [{ offset: 0, quality: 'maj' }, { offset: 9, quality: 'm' }, { offset: 2, quality: 'm' }, { offset: 7, quality: '7' }]
+            },
+            {
+                id: 'ambient_soundscape',
+                nameIt: '24. Cinematic Ambient Soundscape (Imaj7 - vim9 - IVmaj7 - IIIm7)',
+                nameEn: '24. Cinematic Ambient Soundscape (Imaj7 - vim9 - IVmaj7 - IIIm7)',
+                chords: [{ offset: 0, quality: 'maj7' }, { offset: 9, quality: 'm9' }, { offset: 5, quality: 'maj7' }, { offset: 4, quality: 'm7' }]
             }
         ];
 
         const GENRES = [
-            {
-                id: 'jazz',
-                nameIt: 'Jazz Swing',
-                nameEn: 'Jazz Swing',
-                icon: 'fa-martini-glass',
-                defaultBpm: 128,
-                defaultSwing: 52,
-                defaultProg: 'jazz_251',
-                defaultKey: 10 // Bb concert
-            },
-            {
-                id: 'blues',
-                nameIt: 'Blues Shuffle',
-                nameEn: 'Blues Shuffle',
-                icon: 'fa-guitar',
-                defaultBpm: 96,
-                defaultSwing: 55,
-                defaultProg: 'blues_12',
-                defaultKey: 9 // A
-            },
-            {
-                id: 'funk',
-                nameIt: 'Funk Groove',
-                nameEn: 'Funk Groove',
-                icon: 'fa-bolt',
-                defaultBpm: 106,
-                defaultSwing: 18,
-                defaultProg: 'funk_vamp',
-                defaultKey: 2 // D dorian
-            },
-            {
-                id: 'bossa',
-                nameIt: 'Bossa / Latin',
-                nameEn: 'Bossa / Latin',
-                icon: 'fa-umbrella-beach',
-                defaultBpm: 132,
-                defaultSwing: 0,
-                defaultProg: 'bossa_girl',
-                defaultKey: 5 // F
-            },
-            {
-                id: 'rock',
-                nameIt: 'Classic Rock',
-                nameEn: 'Classic Rock',
-                icon: 'fa-fire',
-                defaultBpm: 118,
-                defaultSwing: 0,
-                defaultProg: 'pop_rock',
-                defaultKey: 7 // G
-            },
-            {
-                id: 'lofi',
-                nameIt: 'Neo-Soul / Lo-Fi',
-                nameEn: 'Neo-Soul / Lo-Fi',
-                icon: 'fa-headphones',
-                defaultBpm: 84,
-                defaultSwing: 38,
-                defaultProg: 'neosoul',
-                defaultKey: 3 // Eb
-            },
-            {
-                id: 'reggae',
-                nameIt: 'Reggae One-Drop',
-                nameEn: 'Reggae One-Drop',
-                icon: 'fa-sun',
-                defaultBpm: 78,
-                defaultSwing: 25,
-                defaultProg: 'reggae_roots',
-                defaultKey: 9 // Am
-            },
-            {
-                id: 'latin_rock',
-                nameIt: 'Smooth Santana',
-                nameEn: 'Smooth Latin Rock',
-                icon: 'fa-pepper-hot',
-                defaultBpm: 112,
-                defaultSwing: 0,
-                defaultProg: 'minor_blues',
-                defaultKey: 0 // Cm
-            },
-            {
-                id: 'disco',
-                nameIt: '70s Disco Funk',
-                nameEn: '70s Disco Funk',
-                icon: 'fa-wand-magic-sparkles',
-                defaultBpm: 120,
-                defaultSwing: 8,
-                defaultProg: 'disco_groove',
-                defaultKey: 0 // Cm
-            },
-            {
-                id: 'gypsy',
-                nameIt: 'Gypsy Manouche',
-                nameEn: 'Gypsy Jazz',
-                icon: 'fa-hat-cowboy-side',
-                defaultBpm: 162,
-                defaultSwing: 54,
-                defaultProg: 'minor_swing',
-                defaultKey: 9 // Am
-            },
-            {
-                id: 'rnb_ballad',
-                nameIt: 'Soul Ballad',
-                nameEn: 'Soul Ballad',
-                icon: 'fa-heart',
-                defaultBpm: 72,
-                defaultSwing: 22,
-                defaultProg: 'soul_ballad',
-                defaultKey: 5 // F
-            },
-            {
-                id: 'afrobeat',
-                nameIt: 'Afrobeat Horn',
-                nameEn: 'Afrobeat Horn',
-                icon: 'fa-drum',
-                defaultBpm: 114,
-                defaultSwing: 14,
-                defaultProg: 'afro_vamp',
-                defaultKey: 7 // Gm
-            },
-            {
-                id: 'samba',
-                nameIt: 'Samba Brasil',
-                nameEn: 'Samba Brasil',
-                icon: 'fa-champagne-glasses',
-                defaultBpm: 146,
-                defaultSwing: 12,
-                defaultProg: 'samba_festa',
-                defaultKey: 0 // C
-            },
-            {
-                id: 'country',
-                nameIt: 'Country Train',
-                nameEn: 'Country Train',
-                icon: 'fa-horse',
-                defaultBpm: 138,
-                defaultSwing: 26,
-                defaultProg: 'country_train',
-                defaultKey: 7 // G
-            },
-            {
-                id: 'metal',
-                nameIt: 'Hard Rock / Metal',
-                nameEn: 'Hard Rock / Metal',
-                icon: 'fa-skull',
-                defaultBpm: 134,
-                defaultSwing: 0,
-                defaultProg: 'andalusian',
-                defaultKey: 4 // Em
-            },
-            {
-                id: 'synthwave',
-                nameIt: '80s Synthwave',
-                nameEn: '80s Synthwave',
-                icon: 'fa-bolt-lightning',
-                defaultBpm: 116,
-                defaultSwing: 0,
-                defaultProg: 'synthwave_80s',
-                defaultKey: 9 // Am
-            }
+            { id: 'jazz', nameIt: 'Jazz Swing', nameEn: 'Jazz Swing', icon: 'fa-martini-glass', defaultBpm: 128, defaultSwing: 52, defaultProg: 'jazz_251', defaultKey: 10 },
+            { id: 'blues', nameIt: 'Blues Shuffle', nameEn: 'Blues Shuffle', icon: 'fa-guitar', defaultBpm: 96, defaultSwing: 55, defaultProg: 'blues_12', defaultKey: 9 },
+            { id: 'funk', nameIt: 'Funk Groove', nameEn: 'Funk Groove', icon: 'fa-bolt', defaultBpm: 106, defaultSwing: 18, defaultProg: 'funk_vamp', defaultKey: 2 },
+            { id: 'bossa', nameIt: 'Bossa / Latin', nameEn: 'Bossa / Latin', icon: 'fa-umbrella-beach', defaultBpm: 132, defaultSwing: 0, defaultProg: 'bossa_girl', defaultKey: 5 },
+            { id: 'rock', nameIt: 'Classic Rock', nameEn: 'Classic Rock', icon: 'fa-fire', defaultBpm: 118, defaultSwing: 0, defaultProg: 'pop_rock', defaultKey: 7 },
+            { id: 'lofi', nameIt: 'Neo-Soul / Lo-Fi', nameEn: 'Neo-Soul / Lo-Fi', icon: 'fa-headphones', defaultBpm: 84, defaultSwing: 38, defaultProg: 'neosoul', defaultKey: 3 },
+            { id: 'reggae', nameIt: 'Reggae One-Drop', nameEn: 'Reggae One-Drop', icon: 'fa-sun', defaultBpm: 78, defaultSwing: 25, defaultProg: 'reggae_roots', defaultKey: 9 },
+            { id: 'latin_rock', nameIt: 'Smooth Santana', nameEn: 'Smooth Latin Rock', icon: 'fa-pepper-hot', defaultBpm: 112, defaultSwing: 0, defaultProg: 'minor_blues', defaultKey: 0 },
+            { id: 'disco', nameIt: '70s Disco Funk', nameEn: '70s Disco Funk', icon: 'fa-wand-magic-sparkles', defaultBpm: 120, defaultSwing: 8, defaultProg: 'disco_groove', defaultKey: 0 },
+            { id: 'gypsy', nameIt: 'Gypsy Manouche', nameEn: 'Gypsy Jazz', icon: 'fa-hat-cowboy-side', defaultBpm: 162, defaultSwing: 54, defaultProg: 'minor_swing', defaultKey: 9 },
+            { id: 'rnb_ballad', nameIt: 'Soul Ballad', nameEn: 'Soul Ballad', icon: 'fa-heart', defaultBpm: 72, defaultSwing: 22, defaultProg: 'soul_ballad', defaultKey: 5 },
+            { id: 'afrobeat', nameIt: 'Afrobeat Horn', nameEn: 'Afrobeat Horn', icon: 'fa-drum', defaultBpm: 114, defaultSwing: 14, defaultProg: 'afro_vamp', defaultKey: 7 },
+            { id: 'samba', nameIt: 'Samba Brasil', nameEn: 'Samba Brasil', icon: 'fa-champagne-glasses', defaultBpm: 146, defaultSwing: 12, defaultProg: 'samba_festa', defaultKey: 0 },
+            { id: 'country', nameIt: 'Country Train', nameEn: 'Country Train', icon: 'fa-horse', defaultBpm: 138, defaultSwing: 26, defaultProg: 'country_train', defaultKey: 7 },
+            { id: 'metal', nameIt: 'Hard Rock / Metal', nameEn: 'Hard Rock / Metal', icon: 'fa-skull', defaultBpm: 134, defaultSwing: 0, defaultProg: 'andalusian', defaultKey: 4 },
+            { id: 'synthwave', nameIt: '80s Synthwave', nameEn: '80s Synthwave', icon: 'fa-bolt-lightning', defaultBpm: 116, defaultSwing: 0, defaultProg: 'synthwave_80s', defaultKey: 9 },
+            { id: 'cinematic', nameIt: 'Cinematic Epic', nameEn: 'Cinematic Epic', icon: 'fa-film', defaultBpm: 110, defaultSwing: 0, defaultProg: 'cinematic_epic', defaultKey: 0 },
+            { id: 'zimdancehall', nameIt: 'Zimdancehall', nameEn: 'Zimdancehall Riddim', icon: 'fa-radio', defaultBpm: 104, defaultSwing: 15, defaultProg: 'zimdancehall_vamp', defaultKey: 9 },
+            { id: 'ballad', nameIt: 'Acoustic Ballad', nameEn: 'Acoustic Ballad', icon: 'fa-guitar', defaultBpm: 68, defaultSwing: 10, defaultProg: 'acoustic_ballad', defaultKey: 0 },
+            { id: 'ambient', nameIt: 'Ambient Soundscape', nameEn: 'Ambient Soundscape', icon: 'fa-cloud-moon', defaultBpm: 64, defaultSwing: 0, defaultProg: 'ambient_soundscape', defaultKey: 0 }
         ];
 
         const state = {
@@ -1102,29 +886,28 @@
             countInEnabled: true,
             metronomeEnabled: false,
             metronomeVolume: 0.75,
-            metronomeSubdivision: 1, // 1 = quarter, 2 = eighth, 'offbeat' = beats 2 & 4
+            metronomeSubdivision: 1,
             bpm: 128,
-            swing: 0.52, // 0.0 to 0.65
+            swing: 0.52,
             genre: 'jazz',
-            grooveVariation: 'A', // 'A' or 'B'
+            grooveVariation: 'A',
             pendingDrumFill: false,
-            rootKey: 10, // Bb
+            rootKey: 10,
             progressionId: 'jazz_251',
             displayTransposeSemitones: 0,
             displayTransposeLabel: 'Concert (C)',
             bars: [],
             currentBarIndex: 0,
-            currentStepInBar: 0, // 0..15 (16th notes in a 4/4 bar)
+            currentStepInBar: 0,
             editingBarIndex: 0,
-            // 7 Studio Mixer Channels with expanded instrument timbres
             channels: [
                 { id: 'drums',  icon: 'fa-drum',         color: 'rose',    muted: false, solo: false, volume: 0.85, variant: 0, variants: ['Acoustic Studio', 'Tight Funk Dry', 'Vintage Jazz Brush', '808 / Electronic'] },
                 { id: 'perc',   icon: 'fa-shake',        color: 'amber',   muted: false, solo: false, volume: 0.68, variant: 0, variants: ['Congas & Bongos', 'Shaker & Tambourine', 'Cowbell & Clave'] },
                 { id: 'bass',   icon: 'fa-wave-square',  color: 'emerald', muted: false, solo: false, volume: 0.86, variant: 0, variants: ['Finger Electric', 'Upright Contrabbasso', 'Slap Funk Bass', 'Analog Sub Synth'] },
                 { id: 'keys',   icon: 'fa-keyboard',     color: 'indigo',  muted: false, solo: false, volume: 0.78, variant: 0, variants: ['Fender Rhodes MkI', 'Steinway Grand Piano', 'Hammond B3 Organ', 'Funky Clavinet D6'] },
                 { id: 'guitar', icon: 'fa-guitar',       color: 'amber',   muted: false, solo: false, volume: 0.72, variant: 0, variants: ['Clean Strat/Jazz', 'Nylon Bossa Acoustic', 'Overdrive Crunch', 'Muted Funk Wah'] },
-                { id: 'pad',    icon: 'fa-bullhorn',     color: 'cyan',    muted: false, solo: false, volume: 0.58, variant: 0, variants: ['Brass Horn Section', 'Lush Studio Strings', 'Warm Sax Ensemble', '80s Analog Polysynth'] },
-                { id: 'arp',    icon: 'fa-wand-sparkles',color: 'purple',  muted: false, solo: false, volume: 0.52, variant: 0, variants: ['Jazz Vibraphone', 'Tropical Marimba', 'Synth Arpeggiator'] }
+                { id: 'pad',    icon: 'fa-bullhorn',     color: 'cyan',    muted: false, solo: false, volume: 0.58, variant: 0, variants: ['Brass Horn Section', 'Lush Studio Strings', 'Warm Sax Ensemble', 'Cinematic Choir'] },
+                { id: 'arp',    icon: 'fa-wand-sparkles',color: 'purple',  muted: false, solo: false, volume: 0.52, variant: 0, variants: ['Jazz Vibraphone', 'Tropical Marimba', 'Synth Arp & Harp'] }
             ]
         };
 
@@ -1134,7 +917,6 @@
         let reverbNode = null;
         let noiseBuffer = null;
 
-        // Lookahead scheduler state
         let schedulerTimerId = null;
         let nextNoteTime = 0.0;
         let current16thStep = 0;
@@ -1148,13 +930,12 @@
                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
                 audioCtx = new AudioContextClass();
 
-                // Dynamics Compressor for studio glue
                 const compressor = audioCtx.createDynamicsCompressor();
-                compressor.threshold.setValueAtTime(-16, audioCtx.currentTime);
-                compressor.knee.setValueAtTime(18, audioCtx.currentTime);
-                compressor.ratio.setValueAtTime(4, audioCtx.currentTime);
-                compressor.attack.setValueAtTime(0.005, audioCtx.currentTime);
-                compressor.release.setValueAtTime(0.18, audioCtx.currentTime);
+                compressor.threshold.setValueAtTime(-18, audioCtx.currentTime);
+                compressor.knee.setValueAtTime(20, audioCtx.currentTime);
+                compressor.ratio.setValueAtTime(4.5, audioCtx.currentTime);
+                compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+                compressor.release.setValueAtTime(0.2, audioCtx.currentTime);
 
                 masterGain = audioCtx.createGain();
                 masterGain.gain.setValueAtTime(0.9, audioCtx.currentTime);
@@ -1162,10 +943,9 @@
                 analyserNode = audioCtx.createAnalyser();
                 analyserNode.fftSize = 128;
 
-                // Create algorithmic impulse response for studio room reverb
-                reverbNode = createStudioReverb(audioCtx, 1.4, 2.8);
+                reverbNode = createStudioReverb(audioCtx, 1.8, 3.2);
                 const reverbGain = audioCtx.createGain();
-                reverbGain.gain.setValueAtTime(0.22, audioCtx.currentTime);
+                reverbGain.gain.setValueAtTime(0.26, audioCtx.currentTime);
 
                 masterGain.connect(compressor);
                 masterGain.connect(reverbNode);
@@ -1175,7 +955,6 @@
                 compressor.connect(analyserNode);
                 analyserNode.connect(audioCtx.destination);
 
-                // Pre-generate white/pink noise buffer for realistic snare, hi-hat, and breath
                 noiseBuffer = createNoiseBuffer(audioCtx);
             }
             if (audioCtx.state === 'suspended') {
@@ -1230,86 +1009,91 @@
             return ch ? ch.variant : 0;
         }
 
+        // Improved Sound Synthesis with richer oscillators and dual-stage filters
         function playKick(time, velocity = 1.0) {
             const vol = getChannelVolume('drums') * velocity;
             const variant = getChannelVariant('drums');
             const osc = audioCtx.createOscillator();
+            const subOsc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
 
-            // Sub punch pitch envelope
-            const startFreq = variant === 1 ? 155 : 135;
-            const endFreq = variant === 2 ? 42 : 48;
+            const startFreq = variant === 1 ? 165 : 140;
+            const endFreq = variant === 2 ? 38 : 45;
             osc.frequency.setValueAtTime(startFreq, time);
-            osc.frequency.exponentialRampToValueAtTime(endFreq, time + 0.07);
-            osc.frequency.exponentialRampToValueAtTime(32, time + 0.32);
+            osc.frequency.exponentialRampToValueAtTime(endFreq, time + 0.08);
+            osc.frequency.exponentialRampToValueAtTime(28, time + 0.38);
+
+            subOsc.type = 'triangle';
+            subOsc.frequency.setValueAtTime(55, time);
+            subOsc.frequency.exponentialRampToValueAtTime(25, time + 0.3);
 
             gain.gain.setValueAtTime(0.001, time);
-            gain.gain.linearRampToValueAtTime(vol * 1.15, time + 0.004);
-            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
+            gain.gain.linearRampToValueAtTime(vol * 1.25, time + 0.004);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.4);
 
             osc.connect(gain);
+            subOsc.connect(gain);
             gain.connect(masterGain);
             osc.start(time);
-            osc.stop(time + 0.36);
+            subOsc.start(time);
+            osc.stop(time + 0.42);
+            subOsc.stop(time + 0.42);
         }
 
         function playSnare(time, velocity = 1.0, isRimshot = false) {
             const vol = getChannelVolume('drums') * velocity;
 
             if (isRimshot) {
-                // Crisp Bossa / Reggae cross-stick rimshot
                 const osc = audioCtx.createOscillator();
                 const filter = audioCtx.createBiquadFilter();
                 const gain = audioCtx.createGain();
                 osc.type = 'triangle';
-                osc.frequency.setValueAtTime(420, time);
-                osc.frequency.exponentialRampToValueAtTime(185, time + 0.045);
+                osc.frequency.setValueAtTime(440, time);
+                osc.frequency.exponentialRampToValueAtTime(190, time + 0.05);
 
                 filter.type = 'bandpass';
-                filter.frequency.setValueAtTime(1400, time);
-                filter.Q.setValueAtTime(3.0, time);
+                filter.frequency.setValueAtTime(1500, time);
+                filter.Q.setValueAtTime(3.5, time);
 
-                gain.gain.setValueAtTime(vol * 0.8, time);
-                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.075);
+                gain.gain.setValueAtTime(vol * 0.85, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
 
                 osc.connect(filter);
                 filter.connect(gain);
                 gain.connect(masterGain);
                 osc.start(time);
-                osc.stop(time + 0.08);
+                osc.stop(time + 0.09);
                 return;
             }
 
-            // Snare body oscillator
             const bodyOsc = audioCtx.createOscillator();
             const bodyGain = audioCtx.createGain();
             bodyOsc.type = 'triangle';
-            bodyOsc.frequency.setValueAtTime(195, time);
-            bodyOsc.frequency.exponentialRampToValueAtTime(110, time + 0.08);
+            bodyOsc.frequency.setValueAtTime(210, time);
+            bodyOsc.frequency.exponentialRampToValueAtTime(105, time + 0.09);
 
-            bodyGain.gain.setValueAtTime(vol * 0.65, time);
-            bodyGain.gain.exponentialRampToValueAtTime(0.001, time + 0.14);
+            bodyGain.gain.setValueAtTime(vol * 0.7, time);
+            bodyGain.gain.exponentialRampToValueAtTime(0.001, time + 0.16);
             bodyOsc.connect(bodyGain);
             bodyGain.connect(masterGain);
             bodyOsc.start(time);
-            bodyOsc.stop(time + 0.15);
+            bodyOsc.stop(time + 0.17);
 
-            // Snare wire noise burst
             const noise = audioCtx.createBufferSource();
             noise.buffer = noiseBuffer;
             const filter = audioCtx.createBiquadFilter();
             filter.type = 'highpass';
-            filter.frequency.setValueAtTime(900, time);
+            filter.frequency.setValueAtTime(800, time);
 
             const noiseGain = audioCtx.createGain();
-            noiseGain.gain.setValueAtTime(vol * 0.55, time);
-            noiseGain.gain.exponentialRampToValueAtTime(0.001, time + 0.21);
+            noiseGain.gain.setValueAtTime(vol * 0.62, time);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, time + 0.24);
 
             noise.connect(filter);
             filter.connect(noiseGain);
             noiseGain.connect(masterGain);
             noise.start(time);
-            noise.stop(time + 0.22);
+            noise.stop(time + 0.25);
         }
 
         function playHiHat(time, velocity = 0.7, isOpen = false, isRide = false) {
@@ -1319,12 +1103,12 @@
 
             const filter = audioCtx.createBiquadFilter();
             filter.type = isRide ? 'bandpass' : 'highpass';
-            filter.frequency.setValueAtTime(isRide ? 5200 : 7500, time);
-            if (isRide) filter.Q.setValueAtTime(1.8, time);
+            filter.frequency.setValueAtTime(isRide ? 5500 : 8000, time);
+            if (isRide) filter.Q.setValueAtTime(2.2, time);
 
-            const duration = isRide ? 0.42 : (isOpen ? 0.28 : 0.055);
+            const duration = isRide ? 0.45 : (isOpen ? 0.32 : 0.06);
             const gain = audioCtx.createGain();
-            gain.gain.setValueAtTime(vol * (isRide ? 0.36 : 0.32), time);
+            gain.gain.setValueAtTime(vol * (isRide ? 0.38 : 0.34), time);
             gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
 
             noise.connect(filter);
@@ -1333,24 +1117,23 @@
             noise.start(time);
             noise.stop(time + duration + 0.01);
 
-            // Add metallic bell overtone for Jazz Ride Cymbal
             if (isRide) {
                 const bellOsc = audioCtx.createOscillator();
                 const bellGain = audioCtx.createGain();
                 bellOsc.type = 'square';
-                bellOsc.frequency.setValueAtTime(3180, time);
-                bellGain.gain.setValueAtTime(vol * 0.05, time);
-                bellGain.gain.exponentialRampToValueAtTime(0.0001, time + 0.18);
+                bellOsc.frequency.setValueAtTime(3250, time);
+                bellGain.gain.setValueAtTime(vol * 0.06, time);
+                bellGain.gain.exponentialRampToValueAtTime(0.0001, time + 0.2);
                 bellOsc.connect(bellGain);
                 bellGain.connect(masterGain);
                 bellOsc.start(time);
-                bellOsc.stop(time + 0.19);
+                bellOsc.stop(time + 0.21);
             }
         }
 
         function playBassNote(time, midiNote, duration, velocity = 0.9) {
             const vol = getChannelVolume('bass') * velocity;
-            const variant = getChannelVariant('bass'); // 0: Finger, 1: Upright, 2: Slap/Synth
+            const variant = getChannelVariant('bass');
             const freq = midiToFreq(midiNote);
 
             const osc1 = audioCtx.createOscillator();
@@ -1359,19 +1142,19 @@
             const gain = audioCtx.createGain();
 
             osc1.type = variant === 1 ? 'triangle' : 'sawtooth';
-            osc2.type = 'sine'; // Sub fundamental
+            osc2.type = 'sine';
             osc1.frequency.setValueAtTime(freq, time);
-            osc2.frequency.setValueAtTime(freq, time);
+            osc2.frequency.setValueAtTime(freq * 0.5, time); // Sub octave
 
             filter.type = 'lowpass';
-            const cutoffStart = variant === 2 ? freq * 7.5 : (variant === 1 ? freq * 3.2 : freq * 4.8);
+            const cutoffStart = variant === 2 ? freq * 8.5 : (variant === 1 ? freq * 3.5 : freq * 5.2);
             filter.frequency.setValueAtTime(cutoffStart, time);
-            filter.frequency.exponentialRampToValueAtTime(freq * 1.6, time + Math.min(0.18, duration * 0.7));
-            filter.Q.setValueAtTime(variant === 2 ? 4.2 : 1.8, time);
+            filter.frequency.exponentialRampToValueAtTime(freq * 1.8, time + Math.min(0.2, duration * 0.75));
+            filter.Q.setValueAtTime(variant === 2 ? 4.8 : 2.0, time);
 
             gain.gain.setValueAtTime(0.001, time);
-            gain.gain.linearRampToValueAtTime(vol * 0.72, time + 0.012);
-            gain.gain.exponentialRampToValueAtTime(vol * 0.4, time + duration * 0.65);
+            gain.gain.linearRampToValueAtTime(vol * 0.78, time + 0.012);
+            gain.gain.exponentialRampToValueAtTime(vol * 0.45, time + duration * 0.7);
             gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
 
             osc1.connect(filter);
@@ -1387,11 +1170,11 @@
 
         function playKeysChord(time, midiNotes, duration, velocity = 0.75) {
             const vol = getChannelVolume('keys') * velocity;
-            const variant = getChannelVariant('keys'); // 0: Rhodes, 1: Grand Piano, 2: Hammond Organ
+            const variant = getChannelVariant('keys');
 
             midiNotes.forEach((note, idx) => {
                 const freq = midiToFreq(note);
-                const noteTime = time + idx * 0.006; // subtle humanize
+                const noteTime = time + idx * 0.005;
 
                 const carrier = audioCtx.createOscillator();
                 const modulator = audioCtx.createOscillator();
@@ -1399,47 +1182,40 @@
                 const envGain = audioCtx.createGain();
 
                 if (variant === 0) {
-                    // Fender Rhodes FM Tine + Warm Body
                     carrier.type = 'sine';
                     modulator.type = 'sine';
                     carrier.frequency.setValueAtTime(freq, noteTime);
-                    modulator.frequency.setValueAtTime(freq * 7, noteTime); // Classic Rhodes tine harmonic
-
-                    modGain.gain.setValueAtTime(freq * 1.4, noteTime);
-                    modGain.gain.exponentialRampToValueAtTime(0.1, noteTime + 0.16);
-
+                    modulator.frequency.setValueAtTime(freq * 7, noteTime);
+                    modGain.gain.setValueAtTime(freq * 1.5, noteTime);
+                    modGain.gain.exponentialRampToValueAtTime(0.1, noteTime + 0.18);
                     modulator.connect(modGain);
                     modGain.connect(carrier.frequency);
                 } else if (variant === 1) {
-                    // Warm Acoustic Piano
                     carrier.type = 'triangle';
                     modulator.type = 'sawtooth';
                     carrier.frequency.setValueAtTime(freq, noteTime);
                     modulator.frequency.setValueAtTime(freq * 2, noteTime);
-
-                    modGain.gain.setValueAtTime(freq * 0.8, noteTime);
-                    modGain.gain.exponentialRampToValueAtTime(0.05, noteTime + 0.22);
+                    modGain.gain.setValueAtTime(freq * 0.85, noteTime);
+                    modGain.gain.exponentialRampToValueAtTime(0.05, noteTime + 0.25);
                     modulator.connect(modGain);
                     modGain.connect(carrier.frequency);
                 } else {
-                    // Hammond B3 Drawbar Organ with Leslie vibrato feel
                     carrier.type = 'sine';
                     modulator.type = 'triangle';
                     carrier.frequency.setValueAtTime(freq, noteTime);
-                    modulator.frequency.setValueAtTime(freq * 1.498, noteTime); // 5th drawbar
-                    modGain.gain.setValueAtTime(freq * 0.4, noteTime);
+                    modulator.frequency.setValueAtTime(freq * 1.5, noteTime);
+                    modGain.gain.setValueAtTime(freq * 0.45, noteTime);
                     modulator.connect(modGain);
                     modGain.connect(carrier.frequency);
                 }
 
-                const perVoiceVol = (vol * 0.26) / Math.sqrt(midiNotes.length);
+                const perVoiceVol = (vol * 0.28) / Math.sqrt(midiNotes.length);
                 envGain.gain.setValueAtTime(0.001, noteTime);
                 envGain.gain.linearRampToValueAtTime(perVoiceVol, noteTime + 0.012);
                 if (variant === 2) {
-                    // Organ sustains evenly until release
-                    envGain.gain.setValueAtTime(perVoiceVol * 0.9, noteTime + duration * 0.85);
+                    envGain.gain.setValueAtTime(perVoiceVol * 0.95, noteTime + duration * 0.85);
                 } else {
-                    envGain.gain.exponentialRampToValueAtTime(perVoiceVol * 0.35, noteTime + duration * 0.7);
+                    envGain.gain.exponentialRampToValueAtTime(perVoiceVol * 0.38, noteTime + duration * 0.75);
                 }
                 envGain.gain.exponentialRampToValueAtTime(0.0008, noteTime + duration);
 
@@ -1455,8 +1231,8 @@
 
         function playGuitarStrum(time, midiNotes, duration, velocity = 0.75, isMutedChop = false) {
             const vol = getChannelVolume('guitar') * velocity;
-            const variant = getChannelVariant('guitar'); // 0: Clean, 1: Nylon Acoustic, 2: Overdrive
-            const strumSpread = isMutedChop ? 0.008 : 0.022; // Realistic pick delay across strings
+            const variant = getChannelVariant('guitar');
+            const strumSpread = isMutedChop ? 0.007 : 0.02;
 
             midiNotes.forEach((note, idx) => {
                 const noteTime = time + idx * strumSpread;
@@ -1470,13 +1246,13 @@
                 osc.frequency.setValueAtTime(freq, noteTime);
 
                 filter.type = 'lowpass';
-                const startCutoff = variant === 2 ? 3800 : (variant === 1 ? 2200 : 2900);
+                const startCutoff = variant === 2 ? 4000 : (variant === 1 ? 2400 : 3100);
                 filter.frequency.setValueAtTime(startCutoff, noteTime);
-                filter.frequency.exponentialRampToValueAtTime(750, noteTime + (isMutedChop ? 0.07 : duration * 0.75));
-                filter.Q.setValueAtTime(variant === 2 ? 3.5 : 1.5, noteTime);
+                filter.frequency.exponentialRampToValueAtTime(800, noteTime + (isMutedChop ? 0.075 : duration * 0.8));
+                filter.Q.setValueAtTime(variant === 2 ? 3.8 : 1.6, noteTime);
 
-                const actualDur = isMutedChop ? 0.085 : duration;
-                const voiceVol = (vol * 0.24) / Math.sqrt(midiNotes.length);
+                const actualDur = isMutedChop ? 0.09 : duration;
+                const voiceVol = (vol * 0.26) / Math.sqrt(midiNotes.length);
                 gain.gain.setValueAtTime(0.001, noteTime);
                 gain.gain.linearRampToValueAtTime(voiceVol, noteTime + 0.006);
                 gain.gain.exponentialRampToValueAtTime(0.0008, noteTime + actualDur);
@@ -1492,7 +1268,7 @@
 
         function playPadOrBrass(time, midiNotes, duration, velocity = 0.65) {
             const vol = getChannelVolume('pad') * velocity;
-            const variant = getChannelVariant('pad'); // 0: Brass Section, 1: Strings, 2: Warm Synth Pad
+            const variant = getChannelVariant('pad');
 
             midiNotes.forEach((note) => {
                 const freq = midiToFreq(note);
@@ -1504,22 +1280,21 @@
                 osc1.type = 'sawtooth';
                 osc2.type = variant === 2 ? 'triangle' : 'sawtooth';
                 osc1.frequency.setValueAtTime(freq, time);
-                osc2.frequency.setValueAtTime(freq * 1.004, time); // Lush stereo detune
+                osc2.frequency.setValueAtTime(freq * 1.005, time);
 
                 filter.type = 'lowpass';
                 if (variant === 0) {
-                    // Brass section swell
-                    filter.frequency.setValueAtTime(450, time);
-                    filter.frequency.linearRampToValueAtTime(2400, time + 0.12);
-                    filter.frequency.exponentialRampToValueAtTime(1100, time + duration);
+                    filter.frequency.setValueAtTime(500, time);
+                    filter.frequency.linearRampToValueAtTime(2600, time + 0.14);
+                    filter.frequency.exponentialRampToValueAtTime(1200, time + duration);
                 } else {
-                    filter.frequency.setValueAtTime(1600, time);
+                    filter.frequency.setValueAtTime(1800, time);
                 }
 
-                const voiceVol = (vol * 0.16) / Math.sqrt(midiNotes.length);
+                const voiceVol = (vol * 0.18) / Math.sqrt(midiNotes.length);
                 gain.gain.setValueAtTime(0.001, time);
-                gain.gain.linearRampToValueAtTime(voiceVol, time + (variant === 0 ? 0.06 : 0.22));
-                gain.gain.setValueAtTime(voiceVol * 0.85, time + Math.max(0.08, duration - 0.12));
+                gain.gain.linearRampToValueAtTime(voiceVol, time + (variant === 0 ? 0.07 : 0.24));
+                gain.gain.setValueAtTime(voiceVol * 0.9, time + Math.max(0.1, duration - 0.12));
                 gain.gain.exponentialRampToValueAtTime(0.0008, time + duration + 0.05);
 
                 osc1.connect(filter);
@@ -1536,47 +1311,45 @@
 
         function playPercussion(time, type = 'conga_hi', velocity = 0.75) {
             const vol = getChannelVolume('perc') * velocity;
-            const variant = getChannelVariant('perc'); // 0: Congas/Bongos, 1: Shaker/Tamb, 2: Cowbell/Clave
+            const variant = getChannelVariant('perc');
 
             if (variant === 1 || type === 'shaker') {
-                // Crisp Studio Shaker / Tambourine
                 const noise = audioCtx.createBufferSource();
                 noise.buffer = noiseBuffer;
                 const filter = audioCtx.createBiquadFilter();
                 filter.type = 'bandpass';
-                filter.frequency.setValueAtTime(type === 'conga_hi' ? 9200 : 6800, time);
-                filter.Q.setValueAtTime(3.2, time);
+                filter.frequency.setValueAtTime(type === 'conga_hi' ? 9500 : 7000, time);
+                filter.Q.setValueAtTime(3.5, time);
 
                 const gain = audioCtx.createGain();
                 gain.gain.setValueAtTime(0.001, time);
-                gain.gain.linearRampToValueAtTime(vol * 0.28, time + 0.008);
-                gain.gain.exponentialRampToValueAtTime(0.0008, time + 0.055);
+                gain.gain.linearRampToValueAtTime(vol * 0.3, time + 0.008);
+                gain.gain.exponentialRampToValueAtTime(0.0008, time + 0.06);
 
                 noise.connect(filter);
                 filter.connect(gain);
                 gain.connect(masterGain);
                 noise.start(time);
-                noise.stop(time + 0.06);
+                noise.stop(time + 0.07);
                 return;
             }
 
             if (variant === 2 || type === 'clave') {
-                // Afro-Cuban Clave / Cowbell
                 const osc1 = audioCtx.createOscillator();
                 const osc2 = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc1.type = 'square';
                 osc2.type = 'triangle';
-                const f1 = type === 'conga_low' ? 540 : 810;
+                const f1 = type === 'conga_low' ? 560 : 840;
                 osc1.frequency.setValueAtTime(f1, time);
-                osc2.frequency.setValueAtTime(f1 * 1.48, time);
+                osc2.frequency.setValueAtTime(f1 * 1.5, time);
 
                 const filter = audioCtx.createBiquadFilter();
                 filter.type = 'bandpass';
-                filter.frequency.setValueAtTime(1200, time);
+                filter.frequency.setValueAtTime(1250, time);
 
-                gain.gain.setValueAtTime(vol * 0.35, time);
-                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.065);
+                gain.gain.setValueAtTime(vol * 0.38, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.07);
 
                 osc1.connect(filter);
                 osc2.connect(filter);
@@ -1584,33 +1357,32 @@
                 gain.connect(masterGain);
                 osc1.start(time);
                 osc2.start(time);
-                osc1.stop(time + 0.07);
-                osc2.stop(time + 0.07);
+                osc1.stop(time + 0.075);
+                osc2.stop(time + 0.075);
                 return;
             }
 
-            // Warm Tuned Congas / Bongos (Slap, Open Tone, Low Tumba)
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.type = 'sine';
-            const baseFreq = type === 'conga_hi' ? 295 : (type === 'conga_mid' ? 220 : 165);
-            osc.frequency.setValueAtTime(baseFreq * 1.35, time);
-            osc.frequency.exponentialRampToValueAtTime(baseFreq, time + 0.025);
-            osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.88, time + 0.14);
+            const baseFreq = type === 'conga_hi' ? 310 : (type === 'conga_mid' ? 230 : 175);
+            osc.frequency.setValueAtTime(baseFreq * 1.4, time);
+            osc.frequency.exponentialRampToValueAtTime(baseFreq, time + 0.028);
+            osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.9, time + 0.16);
 
             gain.gain.setValueAtTime(0.001, time);
-            gain.gain.linearRampToValueAtTime(vol * 0.55, time + 0.004);
-            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.15);
+            gain.gain.linearRampToValueAtTime(vol * 0.58, time + 0.004);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.17);
 
             osc.connect(gain);
             gain.connect(masterGain);
             osc.start(time);
-            osc.stop(time + 0.16);
+            osc.stop(time + 0.18);
         }
 
         function playVibesOrArp(time, midiNote, duration, velocity = 0.72) {
             const vol = getChannelVolume('arp') * velocity;
-            const variant = getChannelVariant('arp'); // 0: Jazz Vibraphone, 1: Marimba, 2: Synth Arp
+            const variant = getChannelVariant('arp');
             const freq = midiToFreq(midiNote);
 
             const carrier = audioCtx.createOscillator();
@@ -1619,37 +1391,34 @@
             const env = audioCtx.createGain();
 
             if (variant === 0) {
-                // Metallic Jazz Vibraphone (1:4 harmonic ratio)
                 carrier.type = 'sine';
                 mod.type = 'sine';
                 carrier.frequency.setValueAtTime(freq, time);
                 mod.frequency.setValueAtTime(freq * 4, time);
-                modGain.gain.setValueAtTime(freq * 1.2, time);
-                modGain.gain.exponentialRampToValueAtTime(0.05, time + 0.09);
+                modGain.gain.setValueAtTime(freq * 1.3, time);
+                modGain.gain.exponentialRampToValueAtTime(0.05, time + 0.1);
             } else if (variant === 1) {
-                // Woody Marimba
                 carrier.type = 'sine';
                 mod.type = 'triangle';
                 carrier.frequency.setValueAtTime(freq, time);
-                mod.frequency.setValueAtTime(freq * 3.98, time);
-                modGain.gain.setValueAtTime(freq * 2.1, time);
-                modGain.gain.exponentialRampToValueAtTime(0.01, time + 0.035);
+                mod.frequency.setValueAtTime(freq * 4, time);
+                modGain.gain.setValueAtTime(freq * 2.2, time);
+                modGain.gain.exponentialRampToValueAtTime(0.01, time + 0.04);
             } else {
-                // 80s Pluck Synth Arpeggiator
                 carrier.type = 'sawtooth';
                 mod.type = 'square';
                 carrier.frequency.setValueAtTime(freq, time);
                 mod.frequency.setValueAtTime(freq * 2, time);
-                modGain.gain.setValueAtTime(freq * 0.9, time);
-                modGain.gain.exponentialRampToValueAtTime(0.1, time + 0.12);
+                modGain.gain.setValueAtTime(freq * 0.95, time);
+                modGain.gain.exponentialRampToValueAtTime(0.1, time + 0.14);
             }
 
             mod.connect(modGain);
             modGain.connect(carrier.frequency);
 
-            const dur = variant === 1 ? Math.min(duration, 0.22) : duration;
+            const dur = variant === 1 ? Math.min(duration, 0.24) : duration;
             env.gain.setValueAtTime(0.001, time);
-            env.gain.linearRampToValueAtTime(vol * 0.28, time + 0.005);
+            env.gain.linearRampToValueAtTime(vol * 0.3, time + 0.005);
             env.gain.exponentialRampToValueAtTime(0.0008, time + dur);
 
             carrier.connect(env);
@@ -1703,322 +1472,262 @@
             const genre = state.genre;
             const isVarB = state.grooveVariation === 'B';
 
-            // 1. METRONOME CLICK SCHEDULING
             if (state.metronomeEnabled) {
                 if (state.metronomeSubdivision === 'offbeat') {
-                    // Jazz 2 & 4 hi-hat / click practice feel
-                    if (step === 4 || step === 12) {
-                        playMetronomeClick(time, false, false);
-                    }
+                    if (step === 4 || step === 12) playMetronomeClick(time, false, false);
                 } else if (state.metronomeSubdivision === 2) {
-                    // 8th-note click
-                    if (step % 2 === 0) {
-                        playMetronomeClick(time, step === 0, step % 4 !== 0);
-                    }
+                    if (step % 2 === 0) playMetronomeClick(time, step === 0, step % 4 !== 0);
                 } else {
-                    // Quarter-note click
-                    if (step % 4 === 0) {
-                        playMetronomeClick(time, step === 0, false);
-                    }
+                    if (step % 4 === 0) playMetronomeClick(time, step === 0, false);
                 }
             }
 
-            // 2A. STUDIO DRUMS SCHEDULING BY GENRE
             if (isChannelAudible('drums')) {
                 if (state.pendingDrumFill && step >= 8) {
-                    // Energetic Snare + Kick Drum Fill on beats 3 & 4
-                    playSnare(time, 0.72 + (step - 8) * 0.04, false);
-                    if (step === 8 || step === 12 || step === 15) playKick(time, 0.95);
+                    playSnare(time, 0.75 + (step - 8) * 0.04, false);
+                    if (step === 8 || step === 12 || step === 15) playKick(time, 0.98);
                     if (step === 15) state.pendingDrumFill = false;
                 } else if (genre === 'jazz' || genre === 'gypsy') {
-                    // Classic Jazz Swing Ride Pattern (1, 2, 2&, 3, 4, 4&) + Hi-Hat pedal on 2 & 4
                     if (step === 0 || step === 4 || step === 6 || step === 8 || step === 12 || step === 14) {
-                        playHiHat(time, step % 4 === 0 ? 0.82 : 0.62, false, true);
+                        playHiHat(time, step % 4 === 0 ? 0.85 : 0.65, false, true);
+                    }
+                    if (step === 4 || step === 12) playHiHat(time, 0.78, false, false);
+                    if (step === 0 || (isVarB && step === 10)) playKick(time, 0.68);
+                    if (isVarB && (step === 6 || step === 14)) playSnare(time, 0.48, true);
+                } else if (genre === 'blues') {
+                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.88 : 0.6, false, isVarB);
+                    if (step === 0 || step === 8 || (isVarB && step === 6)) playKick(time, 0.95);
+                    if (step === 4 || step === 12) playSnare(time, 0.92, false);
+                } else if (genre === 'funk') {
+                    playHiHat(time, step % 4 === 0 ? 0.82 : 0.48, step === 14 && isVarB, false);
+                    if (step === 0 || step === 6 || step === 10 || (isVarB && step === 14)) playKick(time, 0.98);
+                    if (step === 4 || step === 12) playSnare(time, 0.98, false);
+                    if (step === 7 || step === 9 || step === 15) playSnare(time, 0.35, false);
+                } else if (genre === 'bossa') {
+                    playHiHat(time, step % 2 === 0 ? 0.65 : 0.4, false, false);
+                    if (step === 0 || step === 6 || step === 8 || step === 14) playKick(time, 0.85);
+                    if (step === 0 || step === 3 || step === 6 || step === 10 || step === 13) playSnare(time, 0.75, true);
+                } else if (genre === 'reggae' || genre === 'zimdancehall') {
+                    if (step % 2 === 0) playHiHat(time, step % 4 === 2 ? 0.85 : 0.52, false, false);
+                    if (genre === 'zimdancehall') {
+                        if (step === 0 || step === 4 || step === 8 || step === 12) playKick(time, 0.95);
+                        if (step === 4 || step === 12) playSnare(time, 0.92, false);
+                    } else {
+                        if (step === 8 || (isVarB && step === 14)) {
+                            playKick(time, 1.0);
+                            playSnare(time, 0.9, true);
+                        }
+                    }
+                } else if (genre === 'lofi' || genre === 'rnb_ballad' || genre === 'ballad' || genre === 'ambient') {
+                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.72 : 0.48, step === 14, false);
+                    if (step === 0 || step === 7 || step === 10) playKick(time, 0.92);
+                    if (step === 4 || step === 12) playSnare(time, 0.85, genre === 'rnb_ballad' && !isVarB);
+                } else if (genre === 'cinematic') {
+                    if (step === 0 || step === 8) {
+                        playKick(time, 1.0);
+                        playPercussion(time, 'conga_low', 0.9);
                     }
                     if (step === 4 || step === 12) {
-                        playHiHat(time, 0.75, false, false); // Chick on 2 & 4
+                        playSnare(time, 0.95, false);
                     }
-                    if (step === 0 || (isVarB && step === 10)) playKick(time, 0.65);
-                    if (isVarB && (step === 6 || step === 14)) playSnare(time, 0.45, true);
-                } else if (genre === 'blues') {
-                    // Blues Shuffle Groove
-                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.85 : 0.58, false, isVarB);
-                    if (step === 0 || step === 8 || (isVarB && step === 6)) playKick(time, 0.92);
-                    if (step === 4 || step === 12) playSnare(time, 0.9, false);
-                } else if (genre === 'funk') {
-                    // Tight 16th-Note Funk Groove with Ghost Snares
-                    playHiHat(time, step % 4 === 0 ? 0.8 : 0.45, step === 14 && isVarB, false);
-                    if (step === 0 || step === 6 || step === 10 || (isVarB && step === 14)) playKick(time, 0.96);
-                    if (step === 4 || step === 12) playSnare(time, 0.95, false);
-                    if (step === 7 || step === 9 || step === 15) playSnare(time, 0.32, false); // Ghost notes
-                } else if (genre === 'bossa') {
-                    // Brazilian Bossa Nova Rimshot Pattern + Soft Kick
-                    playHiHat(time, step % 2 === 0 ? 0.62 : 0.38, false, false);
-                    if (step === 0 || step === 6 || step === 8 || step === 14) playKick(time, 0.82);
-                    if (step === 0 || step === 3 || step === 6 || step === 10 || step === 13) playSnare(time, 0.72, true);
-                } else if (genre === 'reggae') {
-                    // Classic Reggae One-Drop (Kick + Cross-stick on Beat 3 / step 8)
-                    if (step % 2 === 0) playHiHat(time, step % 4 === 2 ? 0.82 : 0.5, false, false);
-                    if (step === 8 || (isVarB && step === 14)) {
-                        playKick(time, 0.98);
-                        playSnare(time, 0.88, true);
-                    }
-                } else if (genre === 'lofi' || genre === 'rnb_ballad') {
-                    // Laid-back Neo-Soul / Lo-Fi Boom-Bap Beat
-                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.7 : 0.45, step === 14, false);
-                    if (step === 0 || step === 7 || step === 10) playKick(time, 0.9);
-                    if (step === 4 || step === 12) playSnare(time, 0.82, genre === 'rnb_ballad' && !isVarB);
                 } else if (genre === 'disco') {
-                    // 70s Studio 54 Four-on-the-Floor + Open Hat on "&"
-                    playHiHat(time, step % 4 === 2 ? 0.88 : 0.52, step % 4 === 2, false);
-                    if (step % 4 === 0) playKick(time, 0.98);
-                    if (step === 4 || step === 12) playSnare(time, 0.92, false);
+                    playHiHat(time, step % 4 === 2 ? 0.9 : 0.55, step % 4 === 2, false);
+                    if (step % 4 === 0) playKick(time, 1.0);
+                    if (step === 4 || step === 12) playSnare(time, 0.95, false);
                 } else if (genre === 'afrobeat') {
-                    // Tony Allen style syncopated Afrobeat drum pattern
-                    playHiHat(time, step % 4 === 2 ? 0.8 : 0.45, step === 6 || step === 14, false);
-                    if (step === 0 || step === 3 || step === 10 || step === 14) playKick(time, 0.92);
-                    if (step === 4 || step === 9 || step === 12 || (isVarB && step === 15)) playSnare(time, 0.82, step === 9);
+                    playHiHat(time, step % 4 === 2 ? 0.82 : 0.48, step === 6 || step === 14, false);
+                    if (step === 0 || step === 3 || step === 10 || step === 14) playKick(time, 0.95);
+                    if (step === 4 || step === 9 || step === 12 || (isVarB && step === 15)) playSnare(time, 0.85, step === 9);
                 } else if (genre === 'samba') {
-                    // Authentic Brazilian Samba Surdo (Beats 1 & 2, heavy accent on 2/step 8) + Tamborim/Rimshot syncopation
-                    playHiHat(time, step % 2 === 0 ? 0.65 : 0.4, false, false);
-                    if (step === 0 || step === 8) playKick(time, step === 8 ? 1.0 : 0.72);
-                    if (step === 7 || step === 15) playKick(time, 0.48); // Surdo pickup
+                    playHiHat(time, step % 2 === 0 ? 0.68 : 0.42, false, false);
+                    if (step === 0 || step === 8) playKick(time, step === 8 ? 1.0 : 0.75);
+                    if (step === 7 || step === 15) playKick(time, 0.5);
                     if (step === 0 || step === 2 || step === 5 || step === 7 || step === 10 || step === 12 || step === 15) {
-                        playSnare(time, 0.68, true);
+                        playSnare(time, 0.7, true);
                     }
                 } else if (genre === 'country') {
-                    // Nashville Country Train Beat (alternating snare brush & crisp backbeat)
-                    playHiHat(time, step % 2 === 0 ? 0.65 : 0.4, false, false);
-                    if (step === 0 || step === 8) playKick(time, 0.95);
-                    if (step === 4 || step === 12) {
-                        playSnare(time, 0.92, false);
-                    } else if (step % 2 === 1 || isVarB) {
-                        playSnare(time, 0.28, false); // Train chug ghost snares
-                    }
-                } else if (genre === 'metal') {
-                    // Driving Double-Kick Hard Rock / Heavy Metal Groove
-                    playHiHat(time, step % 2 === 0 ? 0.88 : 0.5, true, isVarB);
-                    if (step === 0 || step === 2 || step === 6 || step === 8 || step === 10 || (isVarB && step >= 13)) {
-                        playKick(time, 0.98);
-                    }
-                    if (step === 4 || step === 12) playSnare(time, 1.0, false);
-                } else if (genre === 'synthwave') {
-                    // 80s Punchy Linndrum / Outrun Beat
-                    playHiHat(time, step % 2 === 0 ? 0.75 : 0.45, step === 14, false);
-                    if (step === 0 || step === 6 || step === 8 || (isVarB && step === 14)) playKick(time, 1.0);
-                    if (step === 4 || step === 12) playSnare(time, 0.98, false);
-                } else {
-                    // Rock / Latin Rock
-                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.85 : 0.65, isVarB && step === 14, isVarB);
-                    if (step === 0 || step === 6 || step === 8) playKick(time, 0.95);
+                    playHiHat(time, step % 2 === 0 ? 0.68 : 0.42, false, false);
+                    if (step === 0 || step === 8) playKick(time, 0.98);
                     if (step === 4 || step === 12) playSnare(time, 0.95, false);
+                    else if (step % 2 === 1 || isVarB) playSnare(time, 0.3, false);
+                } else if (genre === 'metal') {
+                    playHiHat(time, step % 2 === 0 ? 0.9 : 0.52, true, isVarB);
+                    if (step === 0 || step === 2 || step === 6 || step === 8 || step === 10 || (isVarB && step >= 13)) playKick(time, 1.0);
+                    if (step === 4 || step === 12) playSnare(time, 1.05, false);
+                } else if (genre === 'synthwave') {
+                    playHiHat(time, step % 2 === 0 ? 0.78 : 0.48, step === 14, false);
+                    if (step === 0 || step === 6 || step === 8 || (isVarB && step === 14)) playKick(time, 1.02);
+                    if (step === 4 || step === 12) playSnare(time, 1.0, false);
+                } else {
+                    if (step % 2 === 0) playHiHat(time, step % 4 === 0 ? 0.88 : 0.68, isVarB && step === 14, isVarB);
+                    if (step === 0 || step === 6 || step === 8) playKick(time, 0.98);
+                    if (step === 4 || step === 12) playSnare(time, 0.98, false);
                 }
             }
 
-            // 2B. LATIN & GROOVE PERCUSSION CHANNEL
             if (isChannelAudible('perc')) {
                 if (genre === 'bossa' || genre === 'samba' || genre === 'latin_rock' || genre === 'afrobeat') {
-                    // Syncopated Tumbao Congas + Shaker
-                    if (step % 2 === 1) playPercussion(time, 'shaker', 0.55);
-                    if (step === 0 || step === 8) playPercussion(time, 'conga_low', 0.82);
-                    if (step === 3 || step === 6 || step === 11 || step === 14) playPercussion(time, 'conga_hi', 0.88);
-                } else if (genre === 'funk' || genre === 'disco' || genre === 'reggae') {
-                    if (step === 2 || step === 6 || step === 10 || step === 14) playPercussion(time, 'shaker', 0.75);
-                    if (step === 0 || step === 7 || step === 12) playPercussion(time, 'conga_hi', 0.75);
+                    if (step % 2 === 1) playPercussion(time, 'shaker', 0.58);
+                    if (step === 0 || step === 8) playPercussion(time, 'conga_low', 0.85);
+                    if (step === 3 || step === 6 || step === 11 || step === 14) playPercussion(time, 'conga_hi', 0.9);
+                } else if (genre === 'funk' || genre === 'disco' || genre === 'reggae' || genre === 'zimdancehall') {
+                    if (step === 2 || step === 6 || step === 10 || step === 14) playPercussion(time, 'shaker', 0.78);
+                    if (step === 0 || step === 7 || step === 12) playPercussion(time, 'conga_hi', 0.78);
                 } else {
-                    // Subtle studio tambourine/shaker groove
-                    if (step === 4 || step === 12) playPercussion(time, 'shaker', 0.78);
-                    if (isVarB && step % 4 === 2) playPercussion(time, 'conga_hi', 0.65);
+                    if (step === 4 || step === 12) playPercussion(time, 'shaker', 0.8);
+                    if (isVarB && step % 4 === 2) playPercussion(time, 'conga_hi', 0.68);
                 }
             }
 
-            // 3. BASS LINE SCHEDULING BY GENRE
             if (isChannelAudible('bass')) {
-                const rootBass = 36 + bar.root; // C2 base
+                const rootBass = 36 + bar.root;
                 const thirdBass = rootBass + (qIntervals[1] || 4);
                 const fifthBass = rootBass + (qIntervals[2] || 7);
                 const seventhBass = rootBass + (qIntervals[3] || 10);
                 const chromaticApproach = 36 + nextBar.root + (Math.random() > 0.5 ? -1 : 1);
 
                 if (genre === 'jazz' || genre === 'gypsy') {
-                    // Walking Bass (Quarter notes on 0, 4, 8, 12)
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.8, 0.95);
-                    if (step === 4) playBassNote(time, genre === 'gypsy' ? fifthBass : (isVarB ? fifthBass : thirdBass), stepDur * 3.8, 0.88);
-                    if (step === 8) playBassNote(time, isVarB ? seventhBass : fifthBass, stepDur * 3.8, 0.90);
-                    if (step === 12) playBassNote(time, chromaticApproach, stepDur * 3.8, 0.88);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.8, 0.98);
+                    if (step === 4) playBassNote(time, genre === 'gypsy' ? fifthBass : (isVarB ? fifthBass : thirdBass), stepDur * 3.8, 0.9);
+                    if (step === 8) playBassNote(time, isVarB ? seventhBass : fifthBass, stepDur * 3.8, 0.92);
+                    if (step === 12) playBassNote(time, chromaticApproach, stepDur * 3.8, 0.9);
                 } else if (genre === 'disco') {
-                    // Classic Octave Jumping Disco Bassline
-                    if (step % 4 === 0) playBassNote(time, rootBass, stepDur * 1.8, 0.95);
-                    if (step % 4 === 2) playBassNote(time, rootBass + 12, stepDur * 1.8, 0.88);
+                    if (step % 4 === 0) playBassNote(time, rootBass, stepDur * 1.8, 0.98);
+                    if (step % 4 === 2) playBassNote(time, rootBass + 12, stepDur * 1.8, 0.9);
                 } else if (genre === 'synthwave') {
-                    // Driving 8th-note Analog Synth Bass
                     if (step % 2 === 0) {
                         const oct = (step === 6 || step === 14) ? 12 : 0;
-                        playBassNote(time, rootBass + oct, stepDur * 1.7, 0.94);
+                        playBassNote(time, rootBass + oct, stepDur * 1.7, 0.96);
                     }
-                } else if (genre === 'metal') {
-                    // Chugging 8th/16th Rock/Metal Pedal Bass
+                } else if (genre === 'metal' || genre === 'cinematic') {
                     if (step % 2 === 0 || (isVarB && step === 15)) {
-                        playBassNote(time, rootBass, stepDur * 1.6, 0.96);
+                        playBassNote(time, rootBass, stepDur * 1.6, 0.98);
                     }
                 } else if (genre === 'country') {
-                    // Classic Country Root-Fifth Alternating Bass
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.6, 0.95);
-                    if (step === 8) playBassNote(time, fifthBass - 12 < 31 ? fifthBass : fifthBass - 12, stepDur * 3.6, 0.92);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.6, 0.98);
+                    if (step === 8) playBassNote(time, fifthBass - 12 < 31 ? fifthBass : fifthBass - 12, stepDur * 3.6, 0.94);
                 } else if (genre === 'samba') {
-                    // Brazilian Samba Syncopated Bass
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.2, 0.94);
-                    if (step === 7) playBassNote(time, fifthBass, stepDur * 1.2, 0.85);
-                    if (step === 8) playBassNote(time, fifthBass, stepDur * 3.2, 0.95);
-                    if (step === 15) playBassNote(time, rootBass, stepDur * 1.2, 0.85);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.2, 0.96);
+                    if (step === 7) playBassNote(time, fifthBass, stepDur * 1.2, 0.88);
+                    if (step === 8) playBassNote(time, fifthBass, stepDur * 3.2, 0.98);
+                    if (step === 15) playBassNote(time, rootBass, stepDur * 1.2, 0.88);
                 } else if (genre === 'blues') {
-                    // Shuffle Blues Box Pattern
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 2.5, 0.95);
-                    if (step === 2) playBassNote(time, rootBass, stepDur * 1.5, 0.8);
-                    if (step === 4) playBassNote(time, thirdBass, stepDur * 2.5, 0.88);
-                    if (step === 6) playBassNote(time, fifthBass, stepDur * 1.5, 0.82);
-                    if (step === 8) playBassNote(time, rootBass + 9, stepDur * 2.5, 0.9);
-                    if (step === 12) playBassNote(time, fifthBass, stepDur * 2.5, 0.85);
-                } else if (genre === 'funk' || genre === 'afrobeat') {
-                    // Syncopated 16th-note Funk / Afrobeat Bass
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 2.2, 0.98);
-                    if (step === 3) playBassNote(time, genre === 'afrobeat' ? fifthBass : rootBass + 12, stepDur * 1.4, 0.85);
-                    if (step === 6) playBassNote(time, seventhBass, stepDur * 1.8, 0.9);
-                    if (step === 10) playBassNote(time, rootBass, stepDur * 2.2, 0.92);
-                    if (step === 14) playBassNote(time, fifthBass, stepDur * 1.6, 0.85);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 2.5, 0.98);
+                    if (step === 2) playBassNote(time, rootBass, stepDur * 1.5, 0.82);
+                    if (step === 4) playBassNote(time, thirdBass, stepDur * 2.5, 0.9);
+                    if (step === 6) playBassNote(time, fifthBass, stepDur * 1.5, 0.85);
+                    if (step === 8) playBassNote(time, rootBass + 9, stepDur * 2.5, 0.92);
+                    if (step === 12) playBassNote(time, fifthBass, stepDur * 2.5, 0.88);
+                } else if (genre === 'funk' || genre === 'afrobeat' || genre === 'zimdancehall') {
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 2.2, 1.0);
+                    if (step === 3) playBassNote(time, genre === 'afrobeat' ? fifthBass : rootBass + 12, stepDur * 1.4, 0.88);
+                    if (step === 6) playBassNote(time, seventhBass, stepDur * 1.8, 0.92);
+                    if (step === 10) playBassNote(time, rootBass, stepDur * 2.2, 0.95);
+                    if (step === 14) playBassNote(time, fifthBass, stepDur * 1.6, 0.88);
                 } else if (genre === 'bossa') {
-                    // Classic Bossa Root-Fifth Tumbao
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 5.2, 0.92);
-                    if (step === 6) playBassNote(time, fifthBass - 12 < 32 ? fifthBass : fifthBass - 12, stepDur * 1.8, 0.82);
-                    if (step === 8) playBassNote(time, fifthBass, stepDur * 5.2, 0.88);
-                    if (step === 14) playBassNote(time, chromaticApproach, stepDur * 1.8, 0.8);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 5.2, 0.94);
+                    if (step === 6) playBassNote(time, fifthBass - 12 < 32 ? fifthBass : fifthBass - 12, stepDur * 1.8, 0.85);
+                    if (step === 8) playBassNote(time, fifthBass, stepDur * 5.2, 0.9);
+                    if (step === 14) playBassNote(time, chromaticApproach, stepDur * 1.8, 0.82);
                 } else if (genre === 'reggae') {
-                    // Deep Dub Reggae Bassline
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.5, 0.95);
-                    if (step === 6) playBassNote(time, fifthBass, stepDur * 2.0, 0.88);
-                    if (step === 8) playBassNote(time, thirdBass, stepDur * 3.5, 0.9);
-                    if (step === 14) playBassNote(time, rootBass, stepDur * 1.8, 0.85);
-                } else if (genre === 'rnb_ballad') {
-                    // Warm Sustained Soul Bass
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 6.5, 0.94);
-                    if (step === 7) playBassNote(time, fifthBass, stepDur * 1.2, 0.78);
-                    if (step === 8) playBassNote(time, rootBass, stepDur * 5.5, 0.9);
-                    if (step === 14) playBassNote(time, thirdBass, stepDur * 1.8, 0.82);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 3.5, 0.98);
+                    if (step === 6) playBassNote(time, fifthBass, stepDur * 2.0, 0.9);
+                    if (step === 8) playBassNote(time, thirdBass, stepDur * 3.5, 0.92);
+                    if (step === 14) playBassNote(time, rootBass, stepDur * 1.8, 0.88);
+                } else if (genre === 'rnb_ballad' || genre === 'ballad' || genre === 'ambient') {
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 6.8, 0.95);
+                    if (step === 7) playBassNote(time, fifthBass, stepDur * 1.2, 0.8);
+                    if (step === 8) playBassNote(time, rootBass, stepDur * 5.8, 0.92);
+                    if (step === 14) playBassNote(time, thirdBass, stepDur * 1.8, 0.85);
                 } else {
-                    // Rock / Lo-Fi / Latin Rock
-                    if (step === 0) playBassNote(time, rootBass, stepDur * 4.5, 0.95);
-                    if (step === 6) playBassNote(time, fifthBass, stepDur * 1.8, 0.85);
-                    if (step === 8) playBassNote(time, rootBass, stepDur * 4.5, 0.92);
-                    if (step === 12) playBassNote(time, seventhBass, stepDur * 3.5, 0.88);
+                    if (step === 0) playBassNote(time, rootBass, stepDur * 4.5, 0.98);
+                    if (step === 6) playBassNote(time, fifthBass, stepDur * 1.8, 0.88);
+                    if (step === 8) playBassNote(time, rootBass, stepDur * 4.5, 0.95);
+                    if (step === 12) playBassNote(time, seventhBass, stepDur * 3.5, 0.9);
                 }
             }
 
-            // 4. KEYS (RHODES / PIANO / ORGAN / CLAVINET) SCHEDULING
             if (isChannelAudible('keys')) {
                 const voicing = getVoicingMidiNotes(bar.root, bar.quality, 60);
                 if (genre === 'jazz') {
-                    // Charleston & Syncopated Jazz Comping
-                    if (step === 0) playKeysChord(time, voicing, stepDur * 3.2, 0.8);
-                    if (step === 6) playKeysChord(time, voicing, stepDur * 4.5, 0.85);
-                    if (isVarB && step === 14) playKeysChord(time, voicing, stepDur * 2.0, 0.72);
+                    if (step === 0) playKeysChord(time, voicing, stepDur * 3.2, 0.82);
+                    if (step === 6) playKeysChord(time, voicing, stepDur * 4.5, 0.88);
+                    if (isVarB && step === 14) playKeysChord(time, voicing, stepDur * 2.0, 0.75);
                 } else if (genre === 'bossa' || genre === 'samba') {
                     if (step === 2 || step === 6 || step === 11 || (genre === 'samba' && step === 14)) {
-                        playKeysChord(time, voicing, stepDur * 2.2, 0.78);
+                        playKeysChord(time, voicing, stepDur * 2.2, 0.8);
                     }
-                } else if (genre === 'reggae' || genre === 'gypsy' || genre === 'country') {
-                    // Offbeat Bubble Organ / Honky Tonk Keys on 2 & 4
+                } else if (genre === 'reggae' || genre === 'gypsy' || genre === 'country' || genre === 'zimdancehall') {
                     if (step === 4 || step === 12) {
-                        playKeysChord(time, voicing, stepDur * 1.8, 0.85);
+                        playKeysChord(time, voicing, stepDur * 1.8, 0.88);
                     }
                 } else if (genre === 'funk' || genre === 'disco' || genre === 'afrobeat') {
                     if (step === 0 || step === 3 || step === 8 || step === 12) {
-                        playKeysChord(time, voicing, stepDur * 1.8, 0.82);
+                        playKeysChord(time, voicing, stepDur * 1.8, 0.85);
                     }
                 } else {
-                    // Lush sustained chords on beat 1 & 3 (Soul Ballad, Lo-Fi, Rock, Synthwave)
-                    if (step === 0) playKeysChord(time, voicing, stepDur * 7.5, 0.82);
-                    if (step === 8) playKeysChord(time, voicing, stepDur * 7.5, 0.78);
+                    if (step === 0) playKeysChord(time, voicing, stepDur * 7.8, 0.85);
+                    if (step === 8) playKeysChord(time, voicing, stepDur * 7.8, 0.8);
                 }
             }
 
-            // 5. RHYTHM GUITAR SCHEDULING
             if (isChannelAudible('guitar')) {
                 const gtrVoicing = getVoicingMidiNotes(bar.root, bar.quality, 55);
-                if (genre === 'funk' || genre === 'disco' || genre === 'afrobeat') {
-                    // Funky 16th-note Nile Rodgers skank chops
+                if (genre === 'funk' || genre === 'disco' || genre === 'afrobeat' || genre === 'zimdancehall') {
                     if (step === 2 || step === 6 || step === 10 || step === 14 || (genre === 'disco' && step === 15)) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 1.2, 0.88, true);
+                        playGuitarStrum(time, gtrVoicing, stepDur * 1.2, 0.9, true);
                     }
                 } else if (genre === 'gypsy' || genre === 'country') {
-                    // Gypsy "La Pompe" or Country Carter Scratch
-                    if (step === 0 || step === 8) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 2.1, 0.75, false);
-                    }
-                    if (step === 4 || step === 12) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 1.1, 0.95, true);
-                    }
+                    if (step === 0 || step === 8) playGuitarStrum(time, gtrVoicing, stepDur * 2.1, 0.78, false);
+                    if (step === 4 || step === 12) playGuitarStrum(time, gtrVoicing, stepDur * 1.1, 0.98, true);
                 } else if (genre === 'metal') {
-                    // Palm-muted Power Chord Riffing
                     const powerChord = [48 + bar.root, 55 + bar.root, 60 + bar.root];
                     if (step % 2 === 0) {
-                        playGuitarStrum(time, powerChord, stepDur * 1.6, step % 4 === 0 ? 0.95 : 0.72, step % 4 !== 0);
+                        playGuitarStrum(time, powerChord, stepDur * 1.6, step % 4 === 0 ? 0.98 : 0.75, step % 4 !== 0);
                     }
                 } else if (genre === 'reggae') {
-                    // Crisp off-beat skank on "&" of every beat
                     if (step === 2 || step === 6 || step === 10 || step === 14) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 1.1, 0.9, true);
+                        playGuitarStrum(time, gtrVoicing, stepDur * 1.1, 0.92, true);
                     }
                 } else if (genre === 'jazz') {
-                    // Freddie Green 4-on-the-floor quarter-note comping
-                    if (step % 4 === 0) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 2.6, step % 8 === 4 ? 0.82 : 0.65, false);
-                    }
+                    if (step % 4 === 0) playGuitarStrum(time, gtrVoicing, stepDur * 2.6, step % 8 === 4 ? 0.85 : 0.68, false);
                 } else if (genre === 'bossa' || genre === 'samba') {
-                    // Brazilian syncopated plucking
                     if (step === 0 || step === 3 || step === 6 || step === 10 || step === 12) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 2.4, 0.78, false);
+                        playGuitarStrum(time, gtrVoicing, stepDur * 2.4, 0.8, false);
                     }
                 } else {
-                    // Strumming pattern (Down - Down-Up - Up-Down)
                     if (step === 0 || step === 4 || step === 6 || step === 10 || step === 12) {
-                        playGuitarStrum(time, gtrVoicing, stepDur * 3.0, step % 4 === 0 ? 0.85 : 0.68, false);
+                        playGuitarStrum(time, gtrVoicing, stepDur * 3.0, step % 4 === 0 ? 0.88 : 0.7, false);
                     }
                 }
             }
 
-            // 6. HORNS / STRINGS PAD SCHEDULING
             if (isChannelAudible('pad')) {
                 const padVoicing = getVoicingMidiNotes(bar.root, bar.quality, 60);
-                if (genre === 'afrobeat' || genre === 'disco' || genre === 'samba') {
-                    // Punchy Horn & String Section Hits
+                if (genre === 'afrobeat' || genre === 'disco' || genre === 'samba' || genre === 'cinematic') {
                     if (step === 0 || step === 6 || (isVarB && step === 12)) {
-                        playPadOrBrass(time, padVoicing, stepDur * 3.2, 0.85);
+                        playPadOrBrass(time, padVoicing, stepDur * 3.2, genre === 'cinematic' ? 0.92 : 0.88);
                     }
                 } else if (step === 0) {
-                    playPadOrBrass(time, padVoicing, stepDur * 15.5, 0.7);
+                    playPadOrBrass(time, padVoicing, stepDur * 15.8, 0.72);
                 } else if (isVarB && step === 10 && (genre === 'funk' || genre === 'jazz')) {
-                    // Brass section stab on Groove B!
-                    playPadOrBrass(time, padVoicing, stepDur * 2.2, 0.9);
+                    playPadOrBrass(time, padVoicing, stepDur * 2.2, 0.92);
                 }
             }
 
-            // 7. VIBRAPHONE / MARIMBA / SYNTH ARPEGGIATOR SCHEDULING
             if (isChannelAudible('arp')) {
                 const arpNotes = getVoicingMidiNotes(bar.root, bar.quality, 60);
-                if (genre === 'synthwave' || genre === 'disco') {
-                    // 16th-note Up/Down Arpeggiator
+                if (genre === 'synthwave' || genre === 'disco' || genre === 'cinematic' || genre === 'ambient') {
                     const note = arpNotes[step % arpNotes.length] + (step >= 8 ? 12 : 0);
-                    playVibesOrArp(time, note, stepDur * 1.4, step % 4 === 0 ? 0.85 : 0.62);
+                    playVibesOrArp(time, note, stepDur * 1.4, step % 4 === 0 ? 0.88 : 0.65);
                 } else if (genre === 'jazz' || genre === 'bossa' || genre === 'samba' || genre === 'lofi') {
-                    // Melodic Jazz Vibraphone chordal dyads & arpeggio accents
                     if (step === 0 || step === 3 || step === 6 || step === 10 || (isVarB && step === 14)) {
                         const n1 = arpNotes[(step / 2) % arpNotes.length | 0];
-                        playVibesOrArp(time, n1 + 12, stepDur * 3.5, 0.78);
+                        playVibesOrArp(time, n1 + 12, stepDur * 3.5, 0.8);
                     }
                 } else if (step % 2 === 0) {
-                    // 8th-note rhythmic arpeggio
                     const note = arpNotes[(step / 2) % arpNotes.length];
-                    playVibesOrArp(time, note, stepDur * 2.0, 0.7);
+                    playVibesOrArp(time, note, stepDur * 2.0, 0.72);
                 }
             }
         }
@@ -2026,8 +1735,6 @@
         function getStepDurationSeconds(stepIndex) {
             const quarterNoteSec = 60.0 / state.bpm;
             const base16thSec = quarterNoteSec / 4.0;
-            // Apply swing to 8th-note subdivisions (steps 0-1 vs 2-3)
-            // In Jazz/Blues/Lo-Fi, we swing the off-beat 8th notes (steps 2, 6, 10, 14)
             if (state.swing > 0.01) {
                 const swingOffset = base16thSec * state.swing * 0.75;
                 if (stepIndex % 4 === 0) return base16thSec + swingOffset * 0.5;
@@ -2041,7 +1748,6 @@
         function schedulerTick() {
             while (nextNoteTime < audioCtx.currentTime + SCHEDULE_AHEAD_SEC) {
                 if (state.isCountInPhase) {
-                    // 1-bar Count-In (4 quarter-note clicks)
                     if (countInStep % 4 === 0) {
                         playMetronomeClick(nextNoteTime, countInStep === 0, false);
                         uiQueue.push({
@@ -2148,7 +1854,7 @@
             for (let i = 0; i < 4; i++) {
                 const led = document.getElementById(`beat-led-${i}`);
                 if (led) {
-                    led.className = 'h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75';
+                    led.className = 'h-5 sm:h-6 rounded-lg bg-slate-200 dark:bg-studio-800 flex items-center justify-center font-mono font-bold text-[10px] text-slate-500 transition-all duration-75';
                 }
             }
         }
@@ -2158,13 +1864,14 @@
             const led = document.getElementById(`beat-led-${beatIndex}`);
             if (!led) return;
             if (isCountIn) {
-                led.className = 'h-6 rounded-lg bg-amber-500 text-white shadow-md shadow-amber-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
+                led.className = 'h-5 sm:h-6 rounded-lg bg-amber-500 text-white shadow-md shadow-amber-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             } else if (beatIndex === 0) {
-                led.className = 'h-6 rounded-lg bg-emerald-500 text-white shadow-md shadow-emerald-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
+                led.className = 'h-5 sm:h-6 rounded-lg bg-emerald-500 text-white shadow-md shadow-emerald-500/40 scale-105 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             } else {
-                led.className = 'h-6 rounded-lg bg-indigo-500 text-white shadow-sm shadow-indigo-500/30 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
+                led.className = 'h-5 sm:h-6 rounded-lg bg-indigo-500 text-white shadow-sm shadow-indigo-500/30 flex items-center justify-center font-mono font-extrabold text-[10px] transition-all duration-75';
             }
         }
+
         function switchTab(tabId) {
             const tabs = ['chords', 'groove', 'mixer', 'metro'];
             tabs.forEach(t => {
@@ -2191,7 +1898,7 @@
                     const label = state.lang === 'it' ? g.nameIt : g.nameEn;
                     return `
                         <button onclick="selectGenre('${g.id}')"
-                            class="p-1.5 rounded-xl border text-left transition flex items-center gap-1.5 ${
+                            class="p-1.5 sm:p-2 rounded-xl border text-left transition flex items-center gap-1.5 ${
                                 active
                                     ? 'bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-500/25'
                                     : 'bg-slate-50 dark:bg-studio-800/90 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
@@ -2201,7 +1908,7 @@
                             }">
                                 <i class="fa-solid ${g.icon} text-[10px]"></i>
                             </div>
-                            <div class="min-w-0 overflow-hidden">
+                            <div class="min-w-0 overflow-hidden flex-1">
                                 <div class="font-bold text-[10px] sm:text-[11px] truncate leading-tight">${label}</div>
                                 <div class="text-[8px] sm:text-[9px] font-mono ${active ? 'text-indigo-200' : 'text-slate-400'}">${g.defaultBpm} BPM</div>
                             </div>
@@ -2215,18 +1922,20 @@
                 genreSelect.innerHTML = GENRES.map(g => {
                     const label = state.lang === 'it' ? g.nameIt : g.nameEn;
                     const selected = g.id === state.genre ? 'selected' : '';
-                    return `<option value="${g.id}" ${selected}>${label} (${g.defaultBpm} BPM)</option>`;
+                    return `<option value="${g.id}" ${selected}>${label} (${g.defaultBpm}BPM)</option>`;
                 }).join('');
             }
         }
 
         function renderProgressionOptions() {
             const select = document.getElementById('select-progression');
-            select.innerHTML = PROGRESSIONS.map(p => {
-                const label = state.lang === 'it' ? p.nameIt : p.nameEn;
-                const selected = p.id === state.progressionId ? 'selected' : '';
-                return `<option value="${p.id}" ${selected}>${label}</option>`;
-            }).join('');
+            if (select) {
+                select.innerHTML = PROGRESSIONS.map(p => {
+                    const label = state.lang === 'it' ? p.nameIt : p.nameEn;
+                    const selected = p.id === state.progressionId ? 'selected' : '';
+                    return `<option value="${p.id}" ${selected}>${label}</option>`;
+                }).join('');
+            }
         }
 
         function loadProgressionBars() {
@@ -2244,6 +1953,7 @@
 
         function renderChordBarsGrid() {
             const container = document.getElementById('chord-bars-grid');
+            if (!container) return;
             const isCompact = state.bars.length > 8;
             container.className = `flex-1 min-h-0 grid ${isCompact ? 'grid-cols-4 gap-1.5' : 'grid-cols-2 sm:grid-cols-4 gap-2'} content-start overflow-y-auto no-scrollbar`;
 
@@ -2251,21 +1961,21 @@
                 const isActive = state.isPlaying && !state.isCountInPhase && idx === state.currentBarIndex;
                 const chordName = formatChordDisplay(bar.root, bar.quality);
                 const notesStr = getChordNotesNames(bar.root, bar.quality);
-                const padClass = isCompact ? 'p-2' : 'p-2.5 sm:p-3';
-                const titleSize = isCompact ? 'text-sm sm:text-base' : 'text-base sm:text-xl';
+                const padClass = isCompact ? 'p-1.5 sm:p-2' : 'p-2 sm:p-2.5';
+                const titleSize = isCompact ? 'text-xs sm:text-sm' : 'text-sm sm:text-lg';
 
                 return `
                     <div id="chord-bar-card-${idx}" onclick="openChordModal(${idx})"
-                        class="cursor-pointer rounded-xl ${padClass} border transition relative group ${
+                        class="cursor-pointer rounded-xl ${padClass} border transition relative group truncate ${
                             isActive
                                 ? 'chord-active bg-indigo-600/15 dark:bg-indigo-500/20 border-indigo-500 ring-2 ring-indigo-500/40'
                                 : 'bg-slate-50 dark:bg-studio-800/80 border-slate-200 dark:border-slate-700/80 hover:border-indigo-400'
                         }">
-                        <div class="flex items-center justify-between text-[9px] font-mono text-slate-400 leading-none mb-0.5">
+                        <div class="flex items-center justify-between text-[9px] font-mono text-slate-400 leading-none mb-0.5 truncate">
                             <span>#${idx + 1}</span>
                             <i class="fa-solid fa-pen text-[8px] opacity-40 group-hover:opacity-100 text-indigo-500 transition"></i>
                         </div>
-                        <div class="font-mono font-extrabold ${titleSize} text-slate-800 dark:text-white tracking-tight leading-tight">
+                        <div class="font-mono font-extrabold ${titleSize} text-slate-800 dark:text-white tracking-tight leading-tight truncate">
                             ${chordName}
                         </div>
                         <div class="text-[9px] font-mono text-slate-400 dark:text-slate-400 truncate mt-0.5 leading-none">
@@ -2278,20 +1988,21 @@
 
         function highlightActiveBarCard(activeIdx) {
             const isCompact = state.bars.length > 8;
-            const padClass = isCompact ? 'p-2' : 'p-2.5 sm:p-3';
+            const padClass = isCompact ? 'p-1.5 sm:p-2' : 'p-2 sm:p-2.5';
             state.bars.forEach((_, idx) => {
                 const card = document.getElementById(`chord-bar-card-${idx}`);
                 if (!card) return;
                 if (idx === activeIdx) {
-                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group chord-active bg-indigo-600/15 dark:bg-indigo-500/20 border-indigo-500 ring-2 ring-indigo-500/40`;
+                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group chord-active bg-indigo-600/15 dark:bg-indigo-500/20 border-indigo-500 ring-2 ring-indigo-500/40 truncate`;
                 } else {
-                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group bg-slate-50 dark:bg-studio-800/80 border-slate-200 dark:border-slate-700/80 hover:border-indigo-400`;
+                    card.className = `cursor-pointer rounded-xl ${padClass} border transition relative group bg-slate-50 dark:bg-studio-800/80 border-slate-200 dark:border-slate-700/80 hover:border-indigo-400 truncate`;
                 }
             });
         }
 
         function renderMixerChannels() {
             const container = document.getElementById('mixer-channels-container');
+            if (!container) return;
             const t = I18N[state.lang].channels;
 
             container.innerHTML = state.channels.map(ch => {
@@ -2305,49 +2016,42 @@
                             : 'bg-slate-100/60 dark:bg-studio-950/60 border-slate-200/50 dark:border-slate-800/50 opacity-60'
                     }">
                         <div class="flex items-center justify-between gap-1.5 mb-1">
-                            <!-- Instrument Toggle Button -->
                             <button onclick="toggleChannelMute('${ch.id}')" class="flex items-center gap-2 text-left min-w-0 flex-1">
-                                <div class="w-7 h-7 rounded-lg shrink-0 flex items-center justify-center transition ${
+                                <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg shrink-0 flex items-center justify-center transition ${
                                     audible ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200 dark:bg-studio-800 text-slate-400'
                                 }">
-                                    <i class="fa-solid ${ch.icon} text-[11px]"></i>
+                                    <i class="fa-solid ${ch.icon} text-[10px] sm:text-[11px]"></i>
                                 </div>
-                                <div class="min-w-0">
-                                    <div class="font-bold text-xs leading-tight flex items-center gap-1 truncate">
+                                <div class="min-w-0 flex-1">
+                                    <div class="font-bold text-[11px] sm:text-xs leading-tight flex items-center gap-1 truncate">
                                         <span class="truncate">${info.name}</span>
-                                        <span class="text-[9px] font-mono px-1 rounded ${
+                                        <span class="text-[9px] font-mono px-1 rounded shrink-0 ${
                                             audible ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/15 text-rose-500'
                                         }">${audible ? 'ON' : 'MUTE'}</span>
                                     </div>
                                 </div>
                             </button>
 
-                            <!-- Timbre Variant Selector + Mute / Solo Buttons -->
                             <div class="flex items-center gap-1 shrink-0">
                                 <select onchange="setChannelVariant('${ch.id}', this.value)"
-                                    class="rounded-lg bg-white dark:bg-studio-900 border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 text-[10px] font-semibold focus:outline-none">
+                                    class="rounded-lg bg-white dark:bg-studio-900 border border-slate-200 dark:border-slate-700 px-1 py-0.5 text-[10px] font-semibold focus:outline-none max-w-[95px] sm:max-w-none truncate">
                                     ${ch.variants.map((v, i) => `<option value="${i}" ${ch.variant === i ? 'selected' : ''}>${v}</option>`).join('')}
                                 </select>
 
                                 <button onclick="toggleChannelMute('${ch.id}')"
-                                    class="w-6 h-6 rounded-lg font-mono font-bold text-[10px] transition ${
-                                        ch.muted
-                                            ? 'bg-rose-500 text-white shadow-sm'
-                                            : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
+                                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg font-mono font-bold text-[10px] transition ${
+                                        ch.muted ? 'bg-rose-500 text-white shadow-sm' : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
                                     }" title="Mute">M</button>
 
                                 <button onclick="toggleChannelSolo('${ch.id}')"
-                                    class="w-6 h-6 rounded-lg font-mono font-bold text-[10px] transition ${
-                                        ch.solo
-                                            ? 'bg-amber-500 text-white shadow-sm'
-                                            : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
+                                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg font-mono font-bold text-[10px] transition ${
+                                        ch.solo ? 'bg-amber-500 text-white shadow-sm' : 'bg-slate-200 dark:bg-studio-900 text-slate-600 dark:text-slate-400'
                                     }" title="Solo">S</button>
                             </div>
                         </div>
 
-                        <!-- Volume Slider Row -->
                         <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-volume-low text-[10px] text-slate-400"></i>
+                            <i class="fa-solid fa-volume-low text-[10px] text-slate-400 shrink-0"></i>
                             <input type="range" min="0" max="100" value="${volPercent}"
                                 oninput="setChannelVolume('${ch.id}', this.value)" class="flex-1">
                             <span id="vol-label-${ch.id}" class="text-[10px] font-mono w-7 text-right text-slate-500">${volPercent}%</span>
@@ -2363,12 +2067,17 @@
             state.genre = g.id;
             setTempo(g.defaultBpm);
             updateSwing(g.defaultSwing);
-            document.getElementById('swing-slider').value = g.defaultSwing;
+            const swingSlider = document.getElementById('swing-slider');
+            if (swingSlider) swingSlider.value = g.defaultSwing;
 
             state.rootKey = g.defaultKey;
-            document.getElementById('select-key').value = String(g.defaultKey);
+            const keySel = document.getElementById('select-key');
+            if (keySel) keySel.value = String(g.defaultKey);
 
             state.progressionId = g.defaultProg;
+            const progSel = document.getElementById('select-progression');
+            if (progSel) progSel.value = g.defaultProg;
+
             renderGenreButtons();
             renderProgressionOptions();
             loadProgressionBars();
@@ -2376,27 +2085,29 @@
 
         function setGrooveVariation(varCode) {
             state.grooveVariation = varCode;
-            document.getElementById('var-btn-A').className = varCode === 'A'
-                ? 'px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition'
-                : 'px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
-            document.getElementById('var-btn-B').className = varCode === 'B'
-                ? 'px-2 py-1.5 rounded-lg text-[11px] font-bold bg-indigo-600 text-white transition'
-                : 'px-2 py-1.5 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
+            const btnA = document.getElementById('var-btn-A');
+            const btnB = document.getElementById('var-btn-B');
+            if (btnA) btnA.className = varCode === 'A' ? 'px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold bg-indigo-600 text-white transition' : 'px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
+            if (btnB) btnB.className = varCode === 'B' ? 'px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold bg-indigo-600 text-white transition' : 'px-2 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition';
         }
 
         function triggerDrumFill() {
             initAudioEngine();
             state.pendingDrumFill = true;
             const btn = document.getElementById('btn-drum-fill');
-            btn.classList.add('bg-amber-500', 'text-white');
-            setTimeout(() => btn.classList.remove('bg-amber-500', 'text-white'), 500);
+            if (btn) {
+                btn.classList.add('bg-amber-500', 'text-white');
+                setTimeout(() => btn.classList.remove('bg-amber-500', 'text-white'), 500);
+            }
         }
 
         function setTempo(val) {
             const bpm = Math.max(45, Math.min(220, parseInt(val, 10) || 110));
             state.bpm = bpm;
-            document.getElementById('tempo-slider').value = bpm;
-            document.getElementById('tempo-display').textContent = bpm;
+            const slider = document.getElementById('tempo-slider');
+            if (slider) slider.value = bpm;
+            const disp = document.getElementById('tempo-display');
+            if (disp) disp.textContent = bpm;
         }
 
         function adjustTempo(delta) {
@@ -2421,8 +2132,10 @@
         }
 
         function onKeyOrProgressionChange() {
-            state.rootKey = parseInt(document.getElementById('select-key').value, 10) || 0;
-            state.progressionId = document.getElementById('select-progression').value;
+            const keySel = document.getElementById('select-key');
+            const progSel = document.getElementById('select-progression');
+            if (keySel) state.rootKey = parseInt(keySel.value, 10) || 0;
+            if (progSel) state.progressionId = progSel.value;
             loadProgressionBars();
         }
 
@@ -2484,16 +2197,14 @@
         }
 
         function applyCompanionPreset(presetKey) {
-            // Update companion preset button styles
             document.querySelectorAll('.companion-btn').forEach(btn => {
-                btn.className = 'companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition';
+                btn.className = 'companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-slate-100 dark:bg-studio-800 text-slate-700 dark:text-slate-300 transition';
             });
             const activeBtn = document.getElementById(`preset-btn-${presetKey}`);
             if (activeBtn) {
-                activeBtn.className = 'companion-btn px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition';
+                activeBtn.className = 'companion-btn px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition';
             }
 
-            // Reset channels first
             state.channels.forEach(c => { c.muted = false; c.solo = false; });
 
             if (presetKey === 'guitar') {
@@ -2515,7 +2226,7 @@
             } else if (presetKey === 'trumpet') {
                 const pad = state.channels.find(c => c.id === 'pad');
                 if (pad) pad.muted = true;
-                setTranspositionDisplay(2, 'Bb (Tromba/Tenor)');
+                setTranspositionDisplay(2, 'Bb (Tromba)');
             } else if (presetKey === 'sax_eb') {
                 const pad = state.channels.find(c => c.id === 'pad');
                 if (pad) pad.muted = true;
@@ -2536,12 +2247,13 @@
         function setTranspositionDisplay(semitones, label) {
             state.displayTransposeSemitones = semitones;
             state.displayTransposeLabel = label;
-            document.getElementById('lbl-transpose-badge').textContent = label;
+            const badge = document.getElementById('lbl-transpose-badge');
+            if (badge) badge.textContent = label;
         }
 
         function cycleTranspositionDisplay() {
             if (state.displayTransposeSemitones === 0) {
-                setTranspositionDisplay(2, 'Bb (Tromba/Tenor)');
+                setTranspositionDisplay(2, 'Bb (Tromba)');
             } else if (state.displayTransposeSemitones === 2) {
                 setTranspositionDisplay(9, 'Eb (Alto Sax)');
             } else {
@@ -2564,7 +2276,8 @@
 
         function updateMetroVolume(val) {
             state.metronomeVolume = parseInt(val, 10) / 100;
-            document.getElementById('metro-vol-val').textContent = `${val}%`;
+            const lbl = document.getElementById('metro-vol-val');
+            if (lbl) lbl.textContent = `${val}%`;
         }
 
         function setMetroSubdivision(sub) {
@@ -2573,53 +2286,59 @@
                 const btn = document.getElementById(`metro-sub-${key}`);
                 if (!btn) return;
                 btn.className = String(sub) === key
-                    ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white'
-                    : 'px-2.5 py-1 rounded-lg text-xs font-bold text-slate-500';
+                    ? 'px-2 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white'
+                    : 'px-2 py-1 rounded-lg text-xs font-bold text-slate-500';
             });
         }
 
         function updateSwing(val) {
             state.swing = parseInt(val, 10) / 100;
-            document.getElementById('swing-val').textContent = `${val}%`;
+            const lbl = document.getElementById('swing-val');
+            if (lbl) lbl.textContent = `${val}%`;
         }
 
         function openChordModal(barIndex) {
             state.editingBarIndex = barIndex;
             const bar = state.bars[barIndex];
-            document.getElementById('modal-bar-num').textContent = `#${barIndex + 1}`;
+            const barNum = document.getElementById('modal-bar-num');
+            if (barNum) barNum.textContent = `#${barIndex + 1}`;
 
-            // Render Root picker
             const rootGrid = document.getElementById('modal-root-grid');
-            rootGrid.innerHTML = NOTE_NAMES.map((noteName, idx) => {
-                const active = bar.root === idx;
-                return `
-                    <button onclick="updateBarChordRoot(${idx})"
-                        class="py-2 rounded-xl font-mono font-bold text-xs border transition ${
-                            active
-                                ? 'bg-indigo-600 text-white border-indigo-500'
-                                : 'bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
-                        }">${noteName}</button>
-                `;
-            }).join('');
+            if (rootGrid) {
+                rootGrid.innerHTML = NOTE_NAMES.map((noteName, idx) => {
+                    const active = bar.root === idx;
+                    return `
+                        <button onclick="updateBarChordRoot(${idx})"
+                            class="py-2 rounded-xl font-mono font-bold text-xs border transition ${
+                                active
+                                    ? 'bg-indigo-600 text-white border-indigo-500'
+                                    : 'bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
+                            }">${noteName}</button>
+                    `;
+                }).join('');
+            }
 
-            // Render Quality picker
             const qualGrid = document.getElementById('modal-quality-grid');
-            qualGrid.innerHTML = Object.keys(CHORD_QUALITIES).map(qKey => {
-                const active = bar.quality === qKey;
-                const display = qKey === 'maj' ? 'Maj' : CHORD_QUALITIES[qKey].label;
-                return `
-                    <button onclick="updateBarChordQuality('${qKey}')"
-                        class="py-2 rounded-xl font-mono font-bold text-xs border transition ${
-                            active
-                                ? 'bg-emerald-600 text-white border-emerald-500'
-                                : 'bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
-                        }">${display}</button>
-                `;
-            }).join('');
+            if (qualGrid) {
+                qualGrid.innerHTML = Object.keys(CHORD_QUALITIES).map(qKey => {
+                    const active = bar.quality === qKey;
+                    const display = qKey === 'maj' ? 'Maj' : CHORD_QUALITIES[qKey].label;
+                    return `
+                        <button onclick="updateBarChordQuality('${qKey}')"
+                            class="py-2 rounded-xl font-mono font-bold text-xs border transition ${
+                                active
+                                    ? 'bg-emerald-600 text-white border-emerald-500'
+                                    : 'bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
+                            }">${display}</button>
+                    `;
+                }).join('');
+            }
 
             const modal = document.getElementById('chord-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
         }
 
         function updateBarChordRoot(newRoot) {
@@ -2638,8 +2357,10 @@
 
         function closeChordModal() {
             const modal = document.getElementById('chord-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
         }
 
         function toggleTheme() {
@@ -2648,10 +2369,10 @@
             const iconEl = document.getElementById('icon-theme');
             if (state.darkMode) {
                 htmlEl.classList.add('dark');
-                iconEl.className = 'fa-solid fa-sun text-sm';
+                if (iconEl) iconEl.className = 'fa-solid fa-sun text-sm';
             } else {
                 htmlEl.classList.remove('dark');
-                iconEl.className = 'fa-solid fa-moon text-sm';
+                if (iconEl) iconEl.className = 'fa-solid fa-moon text-sm';
             }
         }
 
@@ -2709,8 +2430,6 @@
         function initNoSleepVideoStream() {
             if (noSleepVideoEl) return;
             try {
-                // Create a tiny off-screen canvas and stream 1fps to a muted playsinline <video>
-                // This prevents iOS Safari & Android WebViews from dimming/locking the display even inside iframes
                 const canvas = document.createElement('canvas');
                 canvas.width = 2;
                 canvas.height = 2;
@@ -2745,8 +2464,6 @@
 
         async function requestWakeLock() {
             if (!state.wakeLockEnabled) return;
-
-            // 1. Native Screen Wake Lock API (Android Chrome, iOS 16.4+ Safari)
             if ('wakeLock' in navigator) {
                 try {
                     if (!wakeLockSentinel || wakeLockSentinel.released) {
@@ -2761,13 +2478,11 @@
                 } catch (err) {}
             }
 
-            // 2. HTML5 Video Stream NoSleep fallback for iPhone / Android / iFrame environments
             initNoSleepVideoStream();
             if (noSleepVideoEl && noSleepVideoEl.paused) {
                 noSleepVideoEl.play().catch(() => {});
             }
 
-            // 3. AudioContext & WakeLock heartbeat monitor
             if (!wakeLockFallbackTimer) {
                 wakeLockFallbackTimer = setInterval(() => {
                     if (!state.wakeLockEnabled) return;
@@ -2787,15 +2502,11 @@
 
         async function releaseWakeLock() {
             if (wakeLockSentinel) {
-                try {
-                    await wakeLockSentinel.release();
-                } catch (e) {}
+                try { await wakeLockSentinel.release(); } catch (e) {}
                 wakeLockSentinel = null;
             }
             if (noSleepVideoEl && !noSleepVideoEl.paused) {
-                try {
-                    noSleepVideoEl.pause();
-                } catch (e) {}
+                try { noSleepVideoEl.pause(); } catch (e) {}
             }
             if (wakeLockFallbackTimer) {
                 clearInterval(wakeLockFallbackTimer);
@@ -2806,11 +2517,8 @@
 
         function toggleWakeLock() {
             state.wakeLockEnabled = !state.wakeLockEnabled;
-            if (state.wakeLockEnabled) {
-                requestWakeLock();
-            } else {
-                releaseWakeLock();
-            }
+            if (state.wakeLockEnabled) requestWakeLock();
+            else releaseWakeLock();
         }
 
         function updateWakeLockUI() {
@@ -2821,9 +2529,7 @@
             const cardBtn = document.getElementById('btn-wakelock-card');
 
             if (state.wakeLockEnabled) {
-                if (headerBtn) {
-                    headerBtn.className = 'px-2 py-1 rounded-lg text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition flex items-center gap-1.5';
-                }
+                if (headerBtn) headerBtn.className = 'px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition flex items-center gap-1 shrink-0';
                 if (headerDot) headerDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
                 if (headerLbl) headerLbl.textContent = t.wakeOn;
                 if (cardBtn) {
@@ -2831,9 +2537,7 @@
                     cardBtn.className = 'shrink-0 px-3 py-1.5 rounded-xl text-xs font-mono font-extrabold bg-emerald-600 text-white shadow-sm transition';
                 }
             } else {
-                if (headerBtn) {
-                    headerBtn.className = 'px-2 py-1 rounded-lg text-[11px] font-mono font-bold bg-slate-100 dark:bg-studio-800 text-slate-400 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1.5';
-                }
+                if (headerBtn) headerBtn.className = 'px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold bg-slate-100 dark:bg-studio-800 text-slate-400 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1 shrink-0';
                 if (headerDot) headerDot.className = 'w-2 h-2 rounded-full bg-slate-400';
                 if (headerLbl) headerLbl.textContent = t.wakeOff;
                 if (cardBtn) {
@@ -2843,30 +2547,13 @@
             }
         }
 
-        // Automatically re-acquire Wake Lock & Video Keep-Alive on any screen touch or visibility return
         document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible' && state.wakeLockEnabled) {
-                requestWakeLock();
-            }
+            if (document.visibilityState === 'visible' && state.wakeLockEnabled) requestWakeLock();
         });
-        document.addEventListener('touchstart', () => {
-            if (state.wakeLockEnabled) {
-                requestWakeLock();
-            }
-        }, { passive: true });
-        document.addEventListener('click', () => {
-            if (state.wakeLockEnabled) {
-                requestWakeLock();
-            }
-        }, { passive: true });
-        document.addEventListener('click', () => {
-            if (state.wakeLockEnabled && (!wakeLockSentinel || wakeLockSentinel.released)) {
-                requestWakeLock();
-            }
-        }, { passive: true });
+        document.addEventListener('touchstart', () => { if (state.wakeLockEnabled) requestWakeLock(); }, { passive: true });
+        document.addEventListener('click', () => { if (state.wakeLockEnabled) requestWakeLock(); }, { passive: true });
 
         function animationLoop() {
-            // 1. Process scheduled UI beat & chord events synchronized with WebAudio clock
             if (state.isPlaying && audioCtx) {
                 const now = audioCtx.currentTime;
                 while (uiQueue.length > 0 && uiQueue[0].time <= now + 0.02) {
@@ -2879,13 +2566,12 @@
                 }
             }
 
-            // 2. Render live frequency spectrum visualizer in the HUD
             const canvas = document.getElementById('audio-visualizer');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
                 if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
                     canvas.width = canvas.clientWidth || 160;
-                    canvas.height = canvas.clientHeight || 20;
+                    canvas.height = canvas.clientHeight || 14;
                 }
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -2917,38 +2603,45 @@
             const playLbl = document.getElementById('lbl-play-btn');
 
             if (state.isPlaying) {
-                playBtn.className = 'flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 active:scale-[0.98] shadow-md shadow-rose-600/25 transition flex items-center justify-center gap-2';
-                playIcon.className = 'fa-solid fa-stop text-xs';
-                playLbl.textContent = t.playStop;
+                if (playBtn) playBtn.className = 'flex-1 py-2 px-2.5 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 active:scale-[0.98] shadow-md shadow-rose-600/25 transition flex items-center justify-center gap-1.5 truncate';
+                if (playIcon) playIcon.className = 'fa-solid fa-stop text-xs shrink-0';
+                if (playLbl) playLbl.textContent = t.playStop;
             } else {
-                playBtn.className = 'flex-1 py-2 px-3 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-2';
-                playIcon.className = 'fa-solid fa-play text-xs';
-                playLbl.textContent = t.playStart;
+                if (playBtn) playBtn.className = 'flex-1 py-2 px-2.5 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:scale-[0.98] shadow-md shadow-indigo-600/25 transition flex items-center justify-center gap-1.5 truncate';
+                if (playIcon) playIcon.className = 'fa-solid fa-play text-xs shrink-0';
+                if (playLbl) playLbl.textContent = t.playStart;
             }
 
             const metroBtn = document.getElementById('btn-metro-toggle');
             const metroLbl = document.getElementById('lbl-metro-btn');
             const metroPill = document.getElementById('metro-status-pill');
             if (state.metronomeEnabled) {
-                metroBtn.className = 'py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-amber-500/20 border-amber-500/40 text-amber-600 dark:text-amber-300';
-                metroLbl.textContent = t.metroOn;
-                metroPill.textContent = 'ON';
-                metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-500 font-bold';
+                if (metroBtn) metroBtn.className = 'py-2 px-2 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-amber-500/20 border-amber-500/40 text-amber-600 dark:text-amber-300 shrink-0';
+                if (metroLbl) metroLbl.textContent = t.metroOn;
+                if (metroPill) {
+                    metroPill.textContent = 'ON';
+                    metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-500 font-bold shrink-0';
+                }
             } else {
-                metroBtn.className = 'py-2 px-2.5 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300';
-                metroLbl.textContent = t.metroOff;
-                metroPill.textContent = 'OFF';
-                metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500';
+                if (metroBtn) metroBtn.className = 'py-2 px-2 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shrink-0';
+                if (metroLbl) metroLbl.textContent = t.metroOff;
+                if (metroPill) {
+                    metroPill.textContent = 'OFF';
+                    metroPill.className = 'text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-studio-800 text-slate-500 shrink-0';
+                }
             }
 
             const countInBtn = document.getElementById('btn-countin-toggle');
-            countInBtn.className = state.countInEnabled
-                ? 'py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300'
-                : 'py-2 px-2 rounded-xl font-bold text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-400';
+            if (countInBtn) {
+                countInBtn.className = state.countInEnabled
+                    ? 'py-2 px-1.5 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-indigo-500/20 border-indigo-500/40 text-indigo-600 dark:text-indigo-300 shrink-0'
+                    : 'py-2 px-1.5 rounded-xl font-bold text-[10px] sm:text-[11px] border transition flex items-center justify-center gap-1 bg-slate-100 dark:bg-studio-800 border-slate-200 dark:border-slate-700 text-slate-400 shrink-0';
+            }
         }
 
         window.onload = function () {
-            document.getElementById('select-key').value = String(state.rootKey);
+            const keySel = document.getElementById('select-key');
+            if (keySel) keySel.value = String(state.rootKey);
             applyTranslations();
             selectGenre('jazz');
             requestWakeLock();
